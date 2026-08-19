@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>포카 체커 (Phoca Checker) - 포토카드 체크리스트 & 위시리스트 생성기</title>
+  <title>포카 체커 (Phoca Checker) - 포토카드 컬렉션 & 위시리스트</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header & Breadcrumbs Navbar -->
   <header class="app-header">
-    <div class="brand">
+    <div class="brand-section" id="btn-nav-home">
       <div class="brand-icon">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -18,12 +18,18 @@
           <polyline points="21 15 16 10 5 21"></polyline>
         </svg>
       </div>
-      <h1 class="brand-title">포카 체커 (Phoca Checker)</h1>
+      <div>
+        <h1 class="brand-title">포카 체커</h1>
+      </div>
+    </div>
+
+    <div class="nav-breadcrumbs" id="nav-breadcrumbs">
+      <span id="nav-category-name" style="display: none;">> 포레스텔라</span>
     </div>
 
     <div class="header-actions">
-      <label for="custom-image-upload" class="btn btn-sm" title="내 이미지 불러오기">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <label for="custom-image-upload" class="btn btn-sm" title="내 포토카드 판 이미지 불러오기">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="17 8 12 3 7 8"></polyline>
           <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -33,7 +39,7 @@
       <input type="file" id="custom-image-upload" accept="image/*" style="display: none;">
 
       <button id="toggle-editor-btn" class="btn btn-sm" title="영역 편집 / 신규 템플릿 제작 도구">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"></circle>
           <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
         </svg>
@@ -42,92 +48,122 @@
     </div>
   </header>
 
-  <main class="app-main">
+  <!-- ========================================================================
+       VIEW 1: Category Hub (Home Landing)
+       ======================================================================== -->
+  <main id="home-view" class="view-container home-view active">
+    <div class="hero-banner">
+      <div class="hero-badge">
+        <span>✨</span> 포토카드 체크리스트 & 위시리스트 생성기
+      </div>
+      <h2 class="hero-title">카테고리를 선택하세요</h2>
+      <p class="hero-desc">보유한 포토카드를 클릭하여 가리거나 남기고, 고화질 완성본 이미지를 다운로드하세요.</p>
+    </div>
+
+    <div class="categories-grid" id="categories-grid">
+      <!-- Generated Dynamically via app.js -->
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       VIEW 2: Checker View
+       ======================================================================== -->
+  <main id="checker-view" class="view-container checker-view">
     <!-- Top Control Bar -->
     <section class="control-bar">
-      <!-- 1. Template Select -->
-      <div class="control-group">
-        <span class="group-label">포카 리스트</span>
-        <div class="select-wrapper">
-          <select id="template-select" class="styled-select"></select>
-          <div class="select-arrow">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </div>
+      <!-- 1. Current Template Trigger (Opens Drawer) -->
+      <button id="template-selector-btn" class="template-selector-btn" title="포토카드 목록 열기">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <span id="current-template-title">fore1. 미스티크 리스트</span>
+        <span id="current-template-tag" class="template-tag-badge">#콘서트/MD</span>
+        <span id="current-template-status" class="template-status-pill badge-status empty">0/8장</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+
+      <!-- 2. Display Mode Toggle -->
+      <div class="segmented-control">
+        <button id="mode-hide-owned" class="seg-btn active" title="보유 포카를 회색으로 가려 미보유 위시리스트 강조">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+          보유 포카 가리기
+        </button>
+        <button id="mode-hide-unowned" class="seg-btn" title="미보유 포카를 회색으로 가려 보유 컬렉션 강조">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          미보유 포카 가리기
+        </button>
       </div>
 
-      <!-- 2. Display Mode Toggle (Inversion) -->
-      <div class="control-group">
-        <span class="group-label">표시 모드</span>
-        <div class="segmented-control">
-          <button id="mode-hide-owned" class="seg-btn active" title="보유한 포카를 회색으로 가려 미보유 위시리스트 강조">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
-              <line x1="1" y1="1" x2="23" y2="23"></line>
-            </svg>
-            보유 포카 가리기
-          </button>
-          <button id="mode-hide-unowned" class="seg-btn" title="미보유 포카를 회색으로 가려 보유 컬렉션 강조">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-            미보유 포카 가리기
-          </button>
-        </div>
-      </div>
-
-      <!-- 3. Bulk Selection Actions -->
-      <div class="control-group">
+      <!-- 3. Bulk Selection & Export Actions -->
+      <div class="control-group-actions" style="display: flex; gap: 0.4rem; align-items: center;">
         <button id="btn-select-all" class="btn btn-sm" title="모두 보유로 선택">전체 선택</button>
-        <button id="btn-deselect-all" class="btn btn-sm" title="선택 모두 초기화">전체 해제</button>
-        <button id="btn-invert-selection" class="btn btn-sm" title="선택 상태 반전">반전</button>
-      </div>
-
-      <!-- 4. Export PNG Button -->
-      <div class="control-group">
-        <button id="btn-export-png" class="btn btn-success" title="완성된 체크리스트 고화질 이미지 다운로드">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="btn-deselect-all" class="btn btn-sm" title="선택 해제">전체 해제</button>
+        <button id="btn-invert-selection" class="btn btn-sm" title="선택 반전">반전</button>
+        <button id="btn-export-png" class="btn btn-success btn-sm" title="완성된 체크리스트 고화질 PNG 다운로드">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          이미지 다운로드 (PNG)
+          다운로드
         </button>
       </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="stats-bar">
-      <div class="stat-info">
-        <span>보유 현황:</span>
-        <span id="stat-count" class="stat-badge">0 / 0 장</span>
-        <span id="stat-percent" class="stat-percent">(0%)</span>
+    <!-- Pager Bar (Prev / Next & Stats) -->
+    <section class="nav-pager-bar">
+      <button id="btn-prev-template" class="btn btn-sm" title="이전 포카판 (단축키: ←)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        이전
+      </button>
+
+      <div class="pager-stats">
+        <span style="color: var(--text-muted);">진행률:</span>
+        <span id="stat-count" style="font-weight: 700; color: #a5b4fc;">0 / 0 장</span>
+        <span id="stat-percent" style="color: var(--text-muted);">(0%)</span>
+        <div class="progress-track">
+          <div id="progress-bar-fill" class="progress-fill"></div>
+        </div>
+        <span id="pager-info" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">1 / 39</span>
       </div>
-      <div class="progress-track">
-        <div id="progress-bar-fill" class="progress-fill"></div>
-      </div>
+
+      <button id="btn-next-template" class="btn btn-sm" title="다음 포카판 (단축키: →)">
+        다음
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
     </section>
 
-    <!-- Visual Editor Drawer (Admin/Creator tool) -->
+    <!-- Visual Editor Drawer (Admin/Creator Tool) -->
     <section id="editor-drawer" class="editor-drawer">
       <div class="editor-header">
         <h3>🛠️ 포토카드 영역 편집기 (그리드 생성 & 미세조정)</h3>
         <button id="close-editor-btn" class="btn btn-sm">닫기</button>
       </div>
 
-      <div class="form-field" style="margin-bottom: 1rem;">
+      <div class="form-field" style="margin-bottom: 0.75rem;">
         <label>템플릿 제목</label>
         <input type="text" id="editor-template-title" value="새 템플릿">
       </div>
 
-      <h4 style="font-size: 0.85rem; color: #a5b4fc; margin-bottom: 0.5rem;">⚡ 1-Click 그리드 일괄 생성</h4>
+      <h4 style="font-size: 0.82rem; color: #a5b4fc; margin-bottom: 0.5rem;">⚡ 1-Click 그리드 일괄 생성</h4>
       <div class="editor-grid-form">
         <div class="form-field">
           <label>행 (Rows)</label>
-          <input type="number" id="grid-rows" value="1" min="1" max="10">
+          <input type="number" id="grid-rows" value="2" min="1" max="10">
         </div>
         <div class="form-field">
           <label>열 (Cols)</label>
@@ -135,19 +171,19 @@
         </div>
         <div class="form-field">
           <label>시작 X (%)</label>
-          <input type="number" id="grid-start-x" value="7.9" step="0.1">
+          <input type="number" id="grid-start-x" value="7.8" step="0.1">
         </div>
         <div class="form-field">
           <label>시작 Y (%)</label>
-          <input type="number" id="grid-start-y" value="48.8" step="0.1">
+          <input type="number" id="grid-start-y" value="48.0" step="0.1">
         </div>
         <div class="form-field">
           <label>카드 가로 (%)</label>
-          <input type="number" id="grid-card-w" value="18.4" step="0.1">
+          <input type="number" id="grid-card-w" value="18.5" step="0.1">
         </div>
         <div class="form-field">
           <label>카드 세로 (%)</label>
-          <input type="number" id="grid-card-h" value="42.5" step="0.1">
+          <input type="number" id="grid-card-h" value="22.0" step="0.1">
         </div>
         <div class="form-field">
           <label>가로 간격 (%)</label>
@@ -155,15 +191,15 @@
         </div>
         <div class="form-field">
           <label>세로 간격 (%)</label>
-          <input type="number" id="grid-gap-y" value="4.0" step="0.1">
+          <input type="number" id="grid-gap-y" value="3.5" step="0.1">
         </div>
         <div class="form-field">
           <label>모서리 둥글기 (px)</label>
-          <input type="number" id="grid-radius" value="12" min="0" max="40">
+          <input type="number" id="grid-radius" value="10" min="0" max="40">
         </div>
       </div>
 
-      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
         <button id="btn-generate-grid" class="btn btn-primary btn-sm">⚡ 그리드 생성</button>
         <button id="btn-add-box" class="btn btn-sm">+ 개별 박스 추가</button>
         <button id="btn-delete-box" class="btn btn-sm">선택 박스 삭제</button>
@@ -172,15 +208,15 @@
       </div>
 
       <div class="form-field">
-        <label>생성된 JSON 설정 데이터 (templates.js 복사용)</label>
-        <textarea id="editor-json-output" class="json-textarea" readonly></textarea>
-        <div style="margin-top: 0.5rem;">
+        <label>생성된 JSON 설정 데이터</label>
+        <textarea id="editor-json-output" class="json-textarea" style="height: 90px;" readonly></textarea>
+        <div style="margin-top: 0.4rem;">
           <button id="btn-copy-json" class="btn btn-sm">📋 JSON 복사하기</button>
         </div>
       </div>
     </section>
 
-    <!-- Main Photocard Canvas Viewport -->
+    <!-- Main Canvas Viewport -->
     <section class="canvas-section">
       <div id="image-wrapper" class="image-wrapper">
         <img id="main-sheet-image" class="main-image" src="" alt="포토카드 리스트 이미지">
@@ -188,6 +224,44 @@
       </div>
     </section>
   </main>
+
+  <!-- ========================================================================
+       Template Drawer / Bottom Sheet Modal
+       ======================================================================== -->
+  <div id="drawer-backdrop" class="drawer-backdrop">
+    <div class="template-drawer">
+      <div class="drawer-header">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 1.2rem;">📂</span>
+          <h3 class="drawer-title">포토카드 리스트 (39종)</h3>
+        </div>
+        <button id="close-drawer-btn" class="btn btn-sm btn-icon-only">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="drawer-search-box">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="drawer-search-input" class="search-input" placeholder="포카판 제목 검색 (예: 월드트리, 키트...)">
+        </div>
+
+        <div class="filter-pills-row" id="drawer-tags-container">
+          <!-- Tag filter pills generated dynamically -->
+        </div>
+      </div>
+
+      <div class="drawer-list-container" id="drawer-list-container">
+        <!-- List item cards generated dynamically with live progress badges -->
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>
