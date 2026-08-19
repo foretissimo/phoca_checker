@@ -1,5 +1,5 @@
 /**
- * Phoca Checker - Main Application with Category Hub & Enhanced Drawer Navigation
+ * Phoca Checker - Main Application Logic
  */
 class PhocaCheckerApp {
   constructor() {
@@ -9,7 +9,7 @@ class PhocaCheckerApp {
     this.currentView = 'home'; // 'home' | 'checker'
     this.currentCategory = this.categories[0] || null;
     this.currentTemplate = this.templates[0] || null;
-    this.currentTemplateId = this.templates[0]?.id || '';
+    this.currentTemplateId = this.templates[0]?.id || 'fore1';
     
     // Checked cards set for active template
     this.checkedCards = new Set();
@@ -29,7 +29,7 @@ class PhocaCheckerApp {
     // Initialize editor
     this.editor = new TemplateEditor(this);
 
-    // Initial Routing
+    // Initial Route
     this.handleRoute();
     window.addEventListener('hashchange', () => this.handleRoute());
   }
@@ -93,7 +93,7 @@ class PhocaCheckerApp {
   }
 
   bindEvents() {
-    // Navigation Home
+    // Nav Home
     if (this.btnNavHome) {
       this.btnNavHome.addEventListener('click', () => {
         window.location.hash = '#/home';
@@ -163,7 +163,7 @@ class PhocaCheckerApp {
       });
     }
 
-    // Keyboard Shortcuts: ArrowLeft (Prev), ArrowRight (Next)
+    // Arrow Keys for Prev/Next
     window.addEventListener('keydown', (e) => {
       if (this.currentView === 'checker' && !this.isDrawerOpen() && !this.editor?.active) {
         if (e.key === 'ArrowLeft' && !e.metaKey && !e.ctrlKey) {
@@ -203,8 +203,14 @@ class PhocaCheckerApp {
   // --------------------------------------------------------------------------
   showHomeView() {
     this.currentView = 'home';
-    if (this.homeView) this.homeView.classList.add('active');
-    if (this.checkerView) this.checkerView.classList.remove('active');
+    if (this.homeView) {
+      this.homeView.style.display = 'block';
+      this.homeView.classList.add('active');
+    }
+    if (this.checkerView) {
+      this.checkerView.style.display = 'none';
+      this.checkerView.classList.remove('active');
+    }
     if (this.navCategoryName) this.navCategoryName.style.display = 'none';
     if (this.navTemplateName) this.navTemplateName.style.display = 'none';
     
@@ -219,7 +225,6 @@ class PhocaCheckerApp {
       const card = document.createElement('div');
       card.className = 'category-card' + (cat.isAvailable ? '' : ' disabled');
 
-      // Calculate total stats for available category
       let totalCards = 0;
       let totalChecked = 0;
       if (cat.isAvailable) {
@@ -277,8 +282,14 @@ class PhocaCheckerApp {
   // --------------------------------------------------------------------------
   showCheckerView(categoryId, templateId) {
     this.currentView = 'checker';
-    if (this.homeView) this.homeView.classList.remove('active');
-    if (this.checkerView) this.checkerView.classList.add('active');
+    if (this.homeView) {
+      this.homeView.style.display = 'none';
+      this.homeView.classList.remove('active');
+    }
+    if (this.checkerView) {
+      this.checkerView.style.display = 'flex';
+      this.checkerView.classList.add('active');
+    }
 
     this.currentCategory = this.categories.find(c => c.id === categoryId) || this.categories[0];
     
@@ -325,6 +336,12 @@ class PhocaCheckerApp {
           this.editor.setEditorActive(true);
         }
       };
+      // In case image is already cached/loaded
+      if (this.mainImage.complete) {
+        this.renderCards();
+        this.updateStats();
+        this.updateCurrentStatusBadge();
+      }
     }
 
     // Update Pager Info
@@ -417,13 +434,10 @@ class PhocaCheckerApp {
     if (!this.drawerListContainer) return;
     this.drawerListContainer.innerHTML = '';
 
-    // Filter templates by tag & search
     const filtered = this.templates.filter(t => {
-      // Tag filter
       if (this.drawerTagFilter !== 'all' && t.tag !== this.drawerTagFilter) {
         return false;
       }
-      // Search filter
       if (this.drawerSearchQuery) {
         const q = this.drawerSearchQuery;
         const matchTitle = t.title.toLowerCase().includes(q);
@@ -449,7 +463,6 @@ class PhocaCheckerApp {
       const isCurrent = t.id === this.currentTemplateId;
       card.className = 'template-item-card' + (isCurrent ? ' current' : '');
 
-      // Check stats for this template
       const checkedSet = this.getCheckedSetForTemplate(t.id);
       const total = t.cards?.length || 0;
       const checked = checkedSet.size;
