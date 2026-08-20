@@ -7138,9 +7138,9 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (FOREST 폴라로이드 멤버)",
         "section": "FOREST 폴라로이드 멤버",
         "x": 7.8,
-        "y": 28.5,
+        "y": 24.55,
         "w": 18.5,
-        "h": 15.5,
+        "h": 14.39,
         "radius": 8
       },
       {
@@ -7148,9 +7148,9 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (FOREST 폴라로이드 멤버)",
         "section": "FOREST 폴라로이드 멤버",
         "x": 29.7,
-        "y": 28.5,
+        "y": 24.55,
         "w": 18.5,
-        "h": 15.5,
+        "h": 14.39,
         "radius": 8
       },
       {
@@ -7158,9 +7158,9 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (FOREST 폴라로이드 멤버)",
         "section": "FOREST 폴라로이드 멤버",
         "x": 51.6,
-        "y": 28.5,
+        "y": 24.55,
         "w": 18.5,
-        "h": 15.5,
+        "h": 14.39,
         "radius": 8
       },
       {
@@ -7168,39 +7168,39 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (FOREST 폴라로이드 멤버)",
         "section": "FOREST 폴라로이드 멤버",
         "x": 73.5,
-        "y": 28.5,
+        "y": 24.55,
         "w": 18.5,
-        "h": 15.5,
+        "h": 14.39,
         "radius": 8
       },
       {
         "id": "fore37_for2_5",
         "name": "유닛/단체 5 (FOREST 폴라로이드 유닛/단체)",
         "section": "FOREST 폴라로이드 유닛/단체",
-        "x": 18.5,
-        "y": 45.5,
+        "x": 7.8,
+        "y": 42.5,
         "w": 18.5,
-        "h": 15.5,
+        "h": 14.39,
         "radius": 8
       },
       {
         "id": "fore37_for2_6",
         "name": "유닛/단체 6 (FOREST 폴라로이드 유닛/단체)",
         "section": "FOREST 폴라로이드 유닛/단체",
-        "x": 40.4,
-        "y": 45.5,
+        "x": 29.7,
+        "y": 42.5,
         "w": 18.5,
-        "h": 15.5,
+        "h": 14.39,
         "radius": 8
       },
       {
         "id": "fore37_for2_7",
         "name": "유닛/단체 7 (FOREST 폴라로이드 유닛/단체)",
         "section": "FOREST 폴라로이드 유닛/단체",
-        "x": 62.3,
-        "y": 45.5,
+        "x": 51.6,
+        "y": 42.5,
         "w": 18.5,
-        "h": 15.5,
+        "h": 14.39,
         "radius": 8
       },
       {
@@ -7208,7 +7208,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (STELLA 폴라로이드 멤버)",
         "section": "STELLA 폴라로이드 멤버",
         "x": 7.8,
-        "y": 64.5,
+        "y": 62.92,
         "w": 18.5,
         "h": 15.5,
         "radius": 8
@@ -7218,7 +7218,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (STELLA 폴라로이드 멤버)",
         "section": "STELLA 폴라로이드 멤버",
         "x": 29.7,
-        "y": 64.5,
+        "y": 62.92,
         "w": 18.5,
         "h": 15.5,
         "radius": 8
@@ -7228,7 +7228,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (STELLA 폴라로이드 멤버)",
         "section": "STELLA 폴라로이드 멤버",
         "x": 51.6,
-        "y": 64.5,
+        "y": 62.92,
         "w": 18.5,
         "h": 15.5,
         "radius": 8
@@ -7238,7 +7238,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (STELLA 폴라로이드 멤버)",
         "section": "STELLA 폴라로이드 멤버",
         "x": 73.5,
-        "y": 64.5,
+        "y": 62.92,
         "w": 18.5,
         "h": 15.5,
         "radius": 8
@@ -7247,8 +7247,8 @@ const PRESET_TEMPLATES = [
         "id": "fore37_stel2_12",
         "name": "유닛/단체 12 (STELLA 폴라로이드 유닛/단체)",
         "section": "STELLA 폴라로이드 유닛/단체",
-        "x": 18.5,
-        "y": 81.5,
+        "x": 7.8,
+        "y": 80.71,
         "w": 18.5,
         "h": 15.5,
         "radius": 8
@@ -7257,8 +7257,8 @@ const PRESET_TEMPLATES = [
         "id": "fore37_stel2_13",
         "name": "유닛/단체 13 (STELLA 폴라로이드 유닛/단체)",
         "section": "STELLA 폴라로이드 유닛/단체",
-        "x": 40.4,
-        "y": 81.5,
+        "x": 29.7,
+        "y": 80.71,
         "w": 18.5,
         "h": 15.5,
         "radius": 8
@@ -7267,8 +7267,8 @@ const PRESET_TEMPLATES = [
         "id": "fore37_stel2_14",
         "name": "유닛/단체 14 (STELLA 폴라로이드 유닛/단체)",
         "section": "STELLA 폴라로이드 유닛/단체",
-        "x": 62.3,
-        "y": 81.5,
+        "x": 51.6,
+        "y": 80.71,
         "w": 18.5,
         "h": 15.5,
         "radius": 8
