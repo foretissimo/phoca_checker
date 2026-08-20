@@ -273,7 +273,7 @@ const PRESET_TEMPLATES = [
         "id": "fore3_7",
         "name": "강형호 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
-        "x": 20.59,
+        "x": 21.59,
         "y": 49.86,
         "w": 14.37,
         "h": 14.73,
