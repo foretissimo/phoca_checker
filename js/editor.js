@@ -89,6 +89,12 @@ class TemplateEditor {
         this.snapEnabled = e.target.checked;
       });
     }
+    const compactLabelToggle = document.getElementById('compact-label-toggle');
+    if (compactLabelToggle) {
+      compactLabelToggle.addEventListener('change', () => {
+        this.renderEditorOverlay();
+      });
+    }
 
     // Keyboard Nudge Navigation
     window.addEventListener('keydown', (e) => {
@@ -359,6 +365,8 @@ class TemplateEditor {
     container.appendChild(guideH);
     container.appendChild(guideV);
 
+    const isCompactLabels = document.getElementById('compact-label-toggle')?.checked;
+
     this.customCards.forEach((card, index) => {
       const box = document.createElement('div');
       box.className = 'editor-card-box' + (this.selectedCardId === card.id ? ' selected' : '');
@@ -368,8 +376,11 @@ class TemplateEditor {
       box.style.height = `${card.h}%`;
       box.style.borderRadius = `${card.radius || 10}px`;
 
+      const shortName = isCompactLabels ? '' : (card.name ? ` ${card.name.split(' (')[0]}` : '');
+      const badgeText = `#${index + 1}${shortName}`;
+
       box.innerHTML = `
-        <span class="editor-badge">#${index + 1} ${card.name || ''}</span>
+        <span class="editor-badge" title="${card.name || ''}">${badgeText}</span>
         <div class="resize-handle se" title="크기 조절"></div>
       `;
 
