@@ -1159,7 +1159,7 @@ const PRESET_TEMPLATES = [
         "x": 7.8,
         "y": 41.5,
         "w": 18.5,
-        "h": 23,
+        "h": 25.05,
         "radius": 10
       },
       {
@@ -1169,7 +1169,7 @@ const PRESET_TEMPLATES = [
         "x": 29.7,
         "y": 41.5,
         "w": 18.5,
-        "h": 23,
+        "h": 25.05,
         "radius": 10
       },
       {
@@ -1179,7 +1179,7 @@ const PRESET_TEMPLATES = [
         "x": 51.6,
         "y": 41.5,
         "w": 18.5,
-        "h": 23,
+        "h": 25.05,
         "radius": 10
       },
       {
@@ -1189,7 +1189,7 @@ const PRESET_TEMPLATES = [
         "x": 73.5,
         "y": 41.5,
         "w": 18.5,
-        "h": 23,
+        "h": 25.05,
         "radius": 10
       },
       {
@@ -1197,7 +1197,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (스페셜 ver.)",
         "section": "스페셜 ver.",
         "x": 7.8,
-        "y": 70.8,
+        "y": 72.38,
         "w": 18.5,
         "h": 23,
         "radius": 10
@@ -1207,7 +1207,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (스페셜 ver.)",
         "section": "스페셜 ver.",
         "x": 29.7,
-        "y": 70.8,
+        "y": 72.38,
         "w": 18.5,
         "h": 23,
         "radius": 10
@@ -1217,7 +1217,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (스페셜 ver.)",
         "section": "스페셜 ver.",
         "x": 51.6,
-        "y": 70.8,
+        "y": 72.38,
         "w": 18.5,
         "h": 23,
         "radius": 10
@@ -1227,7 +1227,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (스페셜 ver.)",
         "section": "스페셜 ver.",
         "x": 73.5,
-        "y": 70.8,
+        "y": 72.38,
         "w": 18.5,
         "h": 23,
         "radius": 10
