@@ -577,12 +577,33 @@ body {
   transform: scale(1);
 }
 
-.floating-download-btn {
+.image-mode-badge {
   position: absolute;
-  bottom: 1.25rem;
-  right: 1.25rem;
-  z-index: 50;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  top: 14px;
+  left: 14px;
+  z-index: 25;
+  padding: 3px 11px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.image-mode-badge.unowned {
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+}
+
+.image-mode-badge.owned {
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.5);
 }
 
 .image-credit-banner {
@@ -590,6 +611,70 @@ body {
   font-size: 0.82rem;
   color: var(--text-muted);
   text-align: center;
+}
+
+/* Modal Dialog */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.22s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  width: 440px;
+  max-width: 90vw;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.95);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-backdrop.open .modal-box {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.backup-option-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 /* --------------------------------------------------------------------------
