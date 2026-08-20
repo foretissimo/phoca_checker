@@ -6,7 +6,7 @@ const https = require('https');
 function loadEnv() {
   const envPath = path.join(__dirname, '.env');
   if (fs.existsSync(envPath)) {
-    const lines = fs.readFileSync(envPath, 'utf8').split('\n');
+    const lines = fs.readFileSync(envPath, 'utf8').split(/\r?\n/);
     for (const line of lines) {
       const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
       if (match) {
@@ -24,7 +24,6 @@ loadEnv();
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const OWNER = process.env.GITHUB_REPO_OWNER || 'foretissimo';
-const REPO = process.env.GITHUB_REPO_NAME || 'phoca_checker';
 
 if (!GITHUB_TOKEN) {
   console.error('Error: GITHUB_TOKEN is not set in .env');
@@ -68,24 +67,21 @@ function githubRequest(method, endpoint, data = null) {
   });
 }
 
-async function uploadOrUpdateFile(filePath, commitMessage) {
+async function uploadOrUpdateFile(targetRepo, filePath, commitMessage) {
   const relativePath = path.relative(__dirname, filePath).replace(/\\/g, '/');
   const content = fs.readFileSync(filePath);
   const base64Content = content.toString('base64');
 
-  // Check if file exists to get sha
   let sha = null;
   try {
-    const existing = await githubRequest('GET', `/repos/${OWNER}/${REPO}/contents/${encodeURIComponent(relativePath)}`);
+    const existing = await githubRequest('GET', `/repos/${OWNER}/${targetRepo}/contents/${encodeURIComponent(relativePath)}`);
     sha = existing.sha;
   } catch (e) {
-    if (e.status !== 404) {
-      // ignore
-    }
+    if (e.status !== 404) {}
   }
 
   const payload = {
-    message: commitMessage || `Update ${relativePath}`,
+    message: commitMessage || `Deploy: ${relativePath}`,
     content: base64Content,
     branch: 'main'
   };
@@ -93,8 +89,8 @@ async function uploadOrUpdateFile(filePath, commitMessage) {
     payload.sha = sha;
   }
 
-  const result = await githubRequest('PUT', `/repos/${OWNER}/${REPO}/contents/${encodeURIComponent(relativePath)}`, payload);
-  console.log(`[Synced] ${relativePath} -> Commit: ${result.commit.sha.substring(0, 7)}`);
+  const result = await githubRequest('PUT', `/repos/${OWNER}/${targetRepo}/contents/${encodeURIComponent(relativePath)}`, payload);
+  console.log(`[Synced -> ${targetRepo}] ${relativePath} -> Commit: ${result.commit.sha.substring(0, 7)}`);
   return result;
 }
 
@@ -116,21 +112,18 @@ function getAllFiles(dirPath, arrayOfFiles = []) {
   return arrayOfFiles;
 }
 
-async function enablePages() {
-  console.log('Checking GitHub Pages configuration...');
+async function enablePages(targetRepo) {
+  console.log(`Checking GitHub Pages configuration for ${targetRepo}...`);
   try {
-    const pages = await githubRequest('GET', `/repos/${OWNER}/${REPO}/pages`);
-    console.log(`GitHub Pages is already active at: ${pages.html_url}`);
+    const pages = await githubRequest('GET', `/repos/${OWNER}/${targetRepo}/pages`);
+    console.log(`GitHub Pages is active at: ${pages.html_url}`);
     return pages;
   } catch (err) {
     if (err.status === 404) {
       console.log('Enabling GitHub Pages on branch main (/)...');
       try {
-        const createRes = await githubRequest('POST', `/repos/${OWNER}/${REPO}/pages`, {
-          source: {
-            branch: 'main',
-            path: '/'
-          }
+        const createRes = await githubRequest('POST', `/repos/${OWNER}/${targetRepo}/pages`, {
+          source: { branch: 'main', path: '/' }
         });
         console.log(`GitHub Pages enabled successfully: ${createRes.html_url}`);
         return createRes;
@@ -141,10 +134,11 @@ async function enablePages() {
   }
 }
 
-async function main() {
-  console.log(`\n🚀 Starting sync for ${OWNER}/${REPO}...`);
+async function syncToRepo(targetRepo) {
+  const repoName = targetRepo || process.argv[2] || process.env.GITHUB_REPO_NAME || 'phoca_checker';
+  console.log(`\n🚀 Starting sync for ${OWNER}/${repoName}...`);
   try {
-    const repoInfo = await githubRequest('GET', `/repos/${OWNER}/${REPO}`);
+    const repoInfo = await githubRequest('GET', `/repos/${OWNER}/${repoName}`);
     console.log(`Connected to: ${repoInfo.full_name} (${repoInfo.html_url})\n`);
 
     const filesToSync = getAllFiles(__dirname);
@@ -152,22 +146,19 @@ async function main() {
 
     for (const file of filesToSync) {
       const rel = path.relative(__dirname, file);
-      await uploadOrUpdateFile(file, `Deploy: ${rel}`);
+      await uploadOrUpdateFile(repoName, file, `Deploy: ${rel}`);
     }
 
-    console.log('\n✅ All files synced successfully!');
-
-    // Enable / check GitHub Pages
-    await enablePages();
-
-    console.log(`\n🎉 Phoca Checker is live at: https://${OWNER}.github.io/${REPO}/`);
+    console.log(`\n✅ All files synced successfully to ${repoName}!`);
+    await enablePages(repoName);
+    console.log(`\n🎉 Site live at: https://${OWNER}.github.io/${repoName}/\n`);
   } catch (err) {
     console.error('❌ Sync failed:', err);
   }
 }
 
 if (require.main === module) {
-  main();
+  syncToRepo();
 }
 
-module.exports = { githubRequest, uploadOrUpdateFile };
+module.exports = { githubRequest, uploadOrUpdateFile, syncToRepo };
