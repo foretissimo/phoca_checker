@@ -515,7 +515,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (폴라로이드 Moonlight B)",
         "section": "폴라로이드 Moonlight B",
         "x": 37.5,
-        "y": 54.8,
+        "y": 54.2,
         "w": 11.2,
         "h": 10,
         "radius": 6
@@ -525,7 +525,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 2,
-        "y": 68.5,
+        "y": 67.22,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -535,7 +535,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 10.8,
-        "y": 68.5,
+        "y": 67.22,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -545,7 +545,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 19.6,
-        "y": 68.5,
+        "y": 67.22,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -555,7 +555,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 28.4,
-        "y": 68.5,
+        "y": 67.22,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -565,9 +565,9 @@ const PRESET_TEMPLATES = [
         "name": "단체 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 37.5,
-        "y": 68.8,
-        "w": 11.2,
-        "h": 10,
+        "y": 67.22,
+        "w": 7.5,
+        "h": 15,
         "radius": 6
       },
       {
@@ -705,7 +705,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (애플뮤직 예판)",
         "section": "애플뮤직 예판",
         "x": 86.6,
-        "y": 29.7,
+        "y": 32.8,
         "w": 11.5,
         "h": 9.5,
         "radius": 8
@@ -755,7 +755,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (위드뮤 예판)",
         "section": "위드뮤 예판",
         "x": 86.6,
-        "y": 48.1,
+        "y": 51.1,
         "w": 11.5,
         "h": 9.5,
         "radius": 8
