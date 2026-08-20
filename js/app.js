@@ -46,6 +46,14 @@ class PhocaCheckerApp {
     this.navTemplateName = document.getElementById('nav-template-name');
     this.btnExportAllMerged = document.getElementById('btn-export-all-merged');
     
+    // Backup & Restore
+    this.btnOpenBackup = document.getElementById('btn-open-backup');
+    this.btnHomeOpenBackup = document.getElementById('btn-home-open-backup');
+    this.backupModalBackdrop = document.getElementById('backup-modal-backdrop');
+    this.btnCloseBackupModal = document.getElementById('close-backup-modal-btn');
+    this.btnExportBackup = document.getElementById('btn-export-backup');
+    this.backupFileInput = document.getElementById('backup-file-input');
+
     // Trigger button for Template Drawer
     this.templateSelectorBtn = document.getElementById('template-selector-btn');
     this.currentTemplateTitleEl = document.getElementById('current-template-title');
@@ -69,6 +77,7 @@ class PhocaCheckerApp {
     this.mainImage = document.getElementById('main-sheet-image');
     this.imageWrapper = document.getElementById('image-wrapper');
     this.cardOverlayContainer = document.getElementById('card-overlay-container');
+    this.imageModeTag = document.getElementById('image-mode-tag');
     
     // Display Mode Toggles
     this.modeHideOwnedBtn = document.getElementById('mode-hide-owned');
@@ -81,7 +90,6 @@ class PhocaCheckerApp {
     
     // Export PNG
     this.btnExportPng = document.getElementById('btn-export-png');
-    this.btnFloatingExport = document.getElementById('btn-floating-export');
     
     // Custom Image Upload
     this.customImageUpload = document.getElementById('custom-image-upload');
@@ -109,6 +117,31 @@ class PhocaCheckerApp {
     }
     if (this.btnDrawerExportMerged) {
       this.btnDrawerExportMerged.addEventListener('click', () => this.exportAllMergedImage());
+    }
+
+    // Backup & Restore
+    if (this.btnOpenBackup) {
+      this.btnOpenBackup.addEventListener('click', () => this.openBackupModal());
+    }
+    if (this.btnHomeOpenBackup) {
+      this.btnHomeOpenBackup.addEventListener('click', () => this.openBackupModal());
+    }
+    if (this.btnCloseBackupModal) {
+      this.btnCloseBackupModal.addEventListener('click', () => this.closeBackupModal());
+    }
+    if (this.backupModalBackdrop) {
+      this.backupModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === this.backupModalBackdrop) this.closeBackupModal();
+      });
+    }
+    if (this.btnExportBackup) {
+      this.btnExportBackup.addEventListener('click', () => this.exportBackupData());
+    }
+    if (this.backupFileInput) {
+      this.backupFileInput.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
+        if (file) this.importBackupData(file);
+      });
     }
 
     // Open Template Drawer
@@ -164,9 +197,6 @@ class PhocaCheckerApp {
     // Export PNG
     if (this.btnExportPng) {
       this.btnExportPng.addEventListener('click', () => this.exportImage());
-    }
-    if (this.btnFloatingExport) {
-      this.btnFloatingExport.addEventListener('click', () => this.exportImage());
     }
 
     // Custom Image Upload
@@ -346,6 +376,7 @@ class PhocaCheckerApp {
         this.renderCards();
         this.updateStats();
         this.updateCurrentStatusBadge();
+        this.updateImageModeBadge();
         if (this.editor && this.editor.active) {
           this.editor.setEditorActive(true);
         }
@@ -354,6 +385,7 @@ class PhocaCheckerApp {
         this.renderCards();
         this.updateStats();
         this.updateCurrentStatusBadge();
+        this.updateImageModeBadge();
       }
     }
 
@@ -364,6 +396,7 @@ class PhocaCheckerApp {
     }
 
     this.updateModeButtonsUI();
+    this.updateImageModeBadge();
   }
 
   goToAdjacentTemplate(delta) {
@@ -404,6 +437,101 @@ class PhocaCheckerApp {
       localStorage.setItem(key, JSON.stringify(Array.from(this.checkedCards)));
       localStorage.setItem('phoca_display_mode', this.displayMode);
     } catch (e) {}
+  }
+
+  // --------------------------------------------------------------------------
+  // Backup / Restore Data (LocalStorage Export & Import)
+  // --------------------------------------------------------------------------
+  openBackupModal() {
+    if (this.backupModalBackdrop) {
+      this.backupModalBackdrop.classList.add('open');
+    }
+  }
+
+  closeBackupModal() {
+    if (this.backupModalBackdrop) {
+      this.backupModalBackdrop.classList.remove('open');
+    }
+  }
+
+  exportBackupData() {
+    try {
+      const backupData = {
+        app: 'phoca_checker',
+        version: '1.0',
+        exportedAt: new Date().toISOString(),
+        displayMode: this.displayMode,
+        checks: {}
+      };
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('phoca_checks_')) {
+          try {
+            backupData.checks[key] = JSON.parse(localStorage.getItem(key));
+          } catch (e) {}
+        }
+      }
+
+      const jsonStr = JSON.stringify(backupData, null, 2);
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const dateStr = new Date().toISOString().split('T')[0];
+      link.href = url;
+      link.download = `포카체커_체크리스트_백업_${dateStr}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+
+      this.showToast('📁 체크리스트 백업 파일이 저장되었습니다!');
+      this.closeBackupModal();
+    } catch (e) {
+      console.error('Backup export error:', e);
+      alert('백업 파일 생성 중 오류가 발생했습니다.');
+    }
+  }
+
+  importBackupData(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (!data || !data.checks || typeof data.checks !== 'object') {
+          throw new Error('유효한 포카체커 백업 파일이 아닙니다.');
+        }
+
+        let restoredCount = 0;
+        for (const [key, value] of Object.entries(data.checks)) {
+          if (key.startsWith('phoca_checks_') && Array.isArray(value)) {
+            localStorage.setItem(key, JSON.stringify(value));
+            restoredCount++;
+          }
+        }
+
+        if (data.displayMode) {
+          this.displayMode = data.displayMode;
+          localStorage.setItem('phoca_display_mode', data.displayMode);
+        }
+
+        this.loadCheckedStateForCurrent();
+        this.updateModeButtonsUI();
+        this.updateImageModeBadge();
+        this.renderCards();
+        this.updateStats();
+        this.updateCurrentStatusBadge();
+        this.renderCategoryHub();
+        this.closeBackupModal();
+
+        this.showToast(`🎉 백업 복원 완료! (총 ${restoredCount}개 포카판 복원됨)`);
+      } catch (err) {
+        console.error('Backup import error:', err);
+        alert(`백업 파일 불러오기 실패: ${err.message}`);
+      }
+    };
+    reader.readAsText(file);
   }
 
   // --------------------------------------------------------------------------
@@ -527,6 +655,7 @@ class PhocaCheckerApp {
   setDisplayMode(mode) {
     this.displayMode = mode;
     this.updateModeButtonsUI();
+    this.updateImageModeBadge();
     this.renderCards();
     this.saveCheckedState();
     
@@ -543,6 +672,19 @@ class PhocaCheckerApp {
         this.modeHideOwnedBtn.classList.remove('active');
         this.modeHideUnownedBtn.classList.add('active');
       }
+    }
+  }
+
+  updateImageModeBadge() {
+    if (!this.imageModeTag) return;
+    if (this.displayMode === 'hide-owned') {
+      this.imageModeTag.textContent = '미보유';
+      this.imageModeTag.className = 'image-mode-badge unowned';
+      this.imageModeTag.title = '보유한 포토카드를 가려 미보유 위시리스트를 확인하는 모드입니다.';
+    } else {
+      this.imageModeTag.textContent = '보유';
+      this.imageModeTag.className = 'image-mode-badge owned';
+      this.imageModeTag.title = '미보유 포토카드를 가려 보유한 컬렉션을 확인하는 모드입니다.';
     }
   }
 
