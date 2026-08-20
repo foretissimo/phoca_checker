@@ -16,7 +16,7 @@ class PhocaCheckerApp {
     
     // Display mode: 'hide-owned' | 'hide-unowned'
     this.displayMode = 'hide-owned';
-    this.overlayOpacity = 0.65;
+    this.overlayOpacity = 0.68;
     
     // Drawer Filters
     this.drawerTagFilter = 'all';
@@ -26,7 +26,7 @@ class PhocaCheckerApp {
     this.loadSavedState();
     this.bindEvents();
     
-    // Initialize editor
+    // Initialize visual editor
     this.editor = new TemplateEditor(this);
 
     // Initial Route
@@ -44,6 +44,7 @@ class PhocaCheckerApp {
     this.btnNavHome = document.getElementById('btn-nav-home');
     this.navCategoryName = document.getElementById('nav-category-name');
     this.navTemplateName = document.getElementById('nav-template-name');
+    this.btnExportAllMerged = document.getElementById('btn-export-all-merged');
     
     // Trigger button for Template Drawer
     this.templateSelectorBtn = document.getElementById('template-selector-btn');
@@ -57,6 +58,7 @@ class PhocaCheckerApp {
     this.drawerSearchInput = document.getElementById('drawer-search-input');
     this.drawerTagsContainer = document.getElementById('drawer-tags-container');
     this.drawerListContainer = document.getElementById('drawer-list-container');
+    this.btnDrawerExportMerged = document.getElementById('btn-drawer-export-merged');
     
     // Pager Prev / Next
     this.btnPrevTemplate = document.getElementById('btn-prev-template');
@@ -79,6 +81,7 @@ class PhocaCheckerApp {
     
     // Export PNG
     this.btnExportPng = document.getElementById('btn-export-png');
+    this.btnFloatingExport = document.getElementById('btn-floating-export');
     
     // Custom Image Upload
     this.customImageUpload = document.getElementById('custom-image-upload');
@@ -98,6 +101,14 @@ class PhocaCheckerApp {
       this.btnNavHome.addEventListener('click', () => {
         window.location.hash = '#/home';
       });
+    }
+
+    // Export All Merged
+    if (this.btnExportAllMerged) {
+      this.btnExportAllMerged.addEventListener('click', () => this.exportAllMergedImage());
+    }
+    if (this.btnDrawerExportMerged) {
+      this.btnDrawerExportMerged.addEventListener('click', () => this.exportAllMergedImage());
     }
 
     // Open Template Drawer
@@ -153,6 +164,9 @@ class PhocaCheckerApp {
     // Export PNG
     if (this.btnExportPng) {
       this.btnExportPng.addEventListener('click', () => this.exportImage());
+    }
+    if (this.btnFloatingExport) {
+      this.btnFloatingExport.addEventListener('click', () => this.exportImage());
     }
 
     // Custom Image Upload
@@ -336,7 +350,6 @@ class PhocaCheckerApp {
           this.editor.setEditorActive(true);
         }
       };
-      // In case image is already cached/loaded
       if (this.mainImage.complete) {
         this.renderCards();
         this.updateStats();
@@ -394,7 +407,7 @@ class PhocaCheckerApp {
   }
 
   // --------------------------------------------------------------------------
-  // Template Drawer / Bottom Sheet
+  // Template Drawer
   // --------------------------------------------------------------------------
   openDrawer() {
     if (!this.drawerBackdrop) return;
@@ -517,7 +530,7 @@ class PhocaCheckerApp {
     this.renderCards();
     this.saveCheckedState();
     
-    const label = mode === 'hide-owned' ? '보유 포카 가리기 (미보유 강조)' : '미보유 포카 가리기 (보유 강조)';
+    const label = mode === 'hide-owned' ? '보유 포카 가리기 (미보유 위시리스트)' : '미보유 포카 가리기 (보유 컬렉션)';
     this.showToast(`표시 모드: ${label}`);
   }
 
@@ -656,6 +669,9 @@ class PhocaCheckerApp {
     }
   }
 
+  // --------------------------------------------------------------------------
+  // Exports
+  // --------------------------------------------------------------------------
   async exportImage() {
     if (!this.currentTemplate || !this.mainImage) return;
 
@@ -669,18 +685,21 @@ class PhocaCheckerApp {
         `;
       }
 
-      const filename = `포카체커_${this.currentTemplate.title.replace(/[\s.]+/g, '_')}_${this.displayMode === 'hide-owned' ? '미보유위시' : '보유완성'}.png`;
+      const modeStr = this.displayMode === 'hide-owned' ? '미보유위시' : '보유완성';
+      const filename = `포카체커_${this.currentTemplate.title.replace(/[\s.]+/g, '_')}_${modeStr}.png`;
 
       await CanvasExporter.exportToPng({
         imageElement: this.mainImage,
+        templateTitle: this.currentTemplate.title,
         cards: this.currentTemplate.cards,
         checkedCardIds: this.checkedCards,
         displayMode: this.displayMode,
         overlayColor: `rgba(16, 17, 24, ${this.overlayOpacity})`,
-        filename: filename
+        filename: filename,
+        showCheckIcon: true
       });
 
-      this.showToast('고해상도 이미지가 다운로드되었습니다! 🎉');
+      this.showToast('고해상도 체크리스트 이미지가 다운로드되었습니다! 🎉');
     } catch (err) {
       console.error('Export error:', err);
       this.showToast('이미지 내보내기 중 오류가 발생했습니다.');
@@ -688,7 +707,7 @@ class PhocaCheckerApp {
       if (this.btnExportPng) {
         this.btnExportPng.classList.remove('loading');
         this.btnExportPng.innerHTML = `
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -696,6 +715,29 @@ class PhocaCheckerApp {
           다운로드
         `;
       }
+    }
+  }
+
+  async exportAllMergedImage() {
+    try {
+      this.showToast('전체 39종 고화질 합본 이미지를 생성 중입니다. 잠시만 기다려 주세요...', 8000);
+      
+      const catTemplates = this.templates.filter(t => t.categoryId === (this.currentCategory?.id || 'fore'));
+
+      await CanvasExporter.exportCategoryMergedPng({
+        templates: catTemplates,
+        getCheckedSetFn: (id) => this.getCheckedSetForTemplate(id),
+        categoryName: this.currentCategory?.name || '포레스텔라',
+        displayMode: this.displayMode,
+        onProgress: (cur, total, msg) => {
+          this.showToast(msg, 3000);
+        }
+      });
+
+      this.showToast('🎉 전체 39종 합본 포스터 이미지가 다운로드되었습니다!');
+    } catch (err) {
+      console.error('Merged export error:', err);
+      this.showToast('전체 이미지 생성 중 오류가 발생했습니다.');
     }
   }
 
