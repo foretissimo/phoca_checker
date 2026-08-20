@@ -214,7 +214,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 4.21,
-        "y": 35.07,
+        "y": 35.86,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -224,7 +224,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 21.59,
-        "y": 35.07,
+        "y": 35.86,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -234,7 +234,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 38.97,
-        "y": 35.07,
+        "y": 35.86,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -244,7 +244,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 56.35,
-        "y": 35.07,
+        "y": 35.86,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -254,7 +254,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 73.4,
-        "y": 40.06,
+        "y": 40.85,
         "w": 22.53,
         "h": 9.74,
         "radius": 10
@@ -264,7 +264,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 4.21,
-        "y": 50.02,
+        "y": 51.44,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -274,7 +274,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 21.59,
-        "y": 50.02,
+        "y": 51.44,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -284,7 +284,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 38.97,
-        "y": 50.02,
+        "y": 51.44,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -294,7 +294,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 56.35,
-        "y": 50.02,
+        "y": 51.44,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -304,7 +304,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 73.4,
-        "y": 55.01,
+        "y": 56.43,
         "w": 22.53,
         "h": 9.74,
         "radius": 10
@@ -316,7 +316,7 @@ const PRESET_TEMPLATES = [
         "x": 4.21,
         "y": 69.01,
         "w": 14.37,
-        "h": 13.94,
+        "h": 14.73,
         "radius": 10
       },
       {
@@ -326,7 +326,7 @@ const PRESET_TEMPLATES = [
         "x": 21.59,
         "y": 69.01,
         "w": 14.37,
-        "h": 13.94,
+        "h": 14.73,
         "radius": 10
       },
       {
@@ -336,7 +336,7 @@ const PRESET_TEMPLATES = [
         "x": 38.97,
         "y": 69.01,
         "w": 14.37,
-        "h": 13.94,
+        "h": 14.73,
         "radius": 10
       },
       {
@@ -346,7 +346,7 @@ const PRESET_TEMPLATES = [
         "x": 56.35,
         "y": 69.01,
         "w": 14.37,
-        "h": 13.94,
+        "h": 14.73,
         "radius": 10
       },
       {
@@ -364,7 +364,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 4.21,
-        "y": 83.64,
+        "y": 84.59,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -374,7 +374,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 21.59,
-        "y": 83.64,
+        "y": 84.59,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -384,7 +384,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 38.97,
-        "y": 83.64,
+        "y": 84.59,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -394,7 +394,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 56.35,
-        "y": 83.64,
+        "y": 84.59,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -404,7 +404,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 73.4,
-        "y": 88.63,
+        "y": 89.58,
         "w": 22.53,
         "h": 9.74,
         "radius": 10
@@ -436,8 +436,8 @@ const PRESET_TEMPLATES = [
         "section": "폴라로이드 Moonlight A",
         "x": 10.8,
         "y": 32.8,
-        "w": 7.5,
-        "h": 15,
+        "w": 7,
+        "h": 15.2,
         "radius": 6
       },
       {
@@ -446,8 +446,8 @@ const PRESET_TEMPLATES = [
         "section": "폴라로이드 Moonlight A",
         "x": 19.6,
         "y": 32.8,
-        "w": 7.5,
-        "h": 15,
+        "w": 7,
+        "h": 15.2,
         "radius": 6
       },
       {
@@ -456,8 +456,8 @@ const PRESET_TEMPLATES = [
         "section": "폴라로이드 Moonlight A",
         "x": 28.4,
         "y": 32.8,
-        "w": 7.5,
-        "h": 15,
+        "w": 7,
+        "h": 15.2,
         "radius": 6
       },
       {
@@ -486,8 +486,8 @@ const PRESET_TEMPLATES = [
         "section": "폴라로이드 Moonlight B",
         "x": 10.8,
         "y": 49,
-        "w": 7.5,
-        "h": 15,
+        "w": 7,
+        "h": 15.2,
         "radius": 6
       },
       {
@@ -496,8 +496,8 @@ const PRESET_TEMPLATES = [
         "section": "폴라로이드 Moonlight B",
         "x": 19.6,
         "y": 49,
-        "w": 7.5,
-        "h": 15,
+        "w": 7,
+        "h": 15.2,
         "radius": 6
       },
       {
@@ -506,8 +506,8 @@ const PRESET_TEMPLATES = [
         "section": "폴라로이드 Moonlight B",
         "x": 28.4,
         "y": 49,
-        "w": 7.5,
-        "h": 15,
+        "w": 7,
+        "h": 15.2,
         "radius": 6
       },
       {
@@ -515,7 +515,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (폴라로이드 Moonlight B)",
         "section": "폴라로이드 Moonlight B",
         "x": 37.5,
-        "y": 54.2,
+        "y": 54.8,
         "w": 11.2,
         "h": 10,
         "radius": 6
@@ -525,7 +525,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 2,
-        "y": 67.06,
+        "y": 68.5,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -535,7 +535,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 10.8,
-        "y": 67.06,
+        "y": 68.5,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -545,7 +545,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 19.6,
-        "y": 67.06,
+        "y": 68.5,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -555,7 +555,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 28.4,
-        "y": 67.06,
+        "y": 68.5,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -565,9 +565,9 @@ const PRESET_TEMPLATES = [
         "name": "단체 (폴라로이드 Sunlight A)",
         "section": "폴라로이드 Sunlight A",
         "x": 37.5,
-        "y": 67.06,
-        "w": 7.5,
-        "h": 15,
+        "y": 68.8,
+        "w": 11.2,
+        "h": 10,
         "radius": 6
       },
       {
@@ -575,7 +575,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (폴라로이드 Sunlight B)",
         "section": "폴라로이드 Sunlight B",
         "x": 2,
-        "y": 82.8,
+        "y": 83.2,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -585,7 +585,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (폴라로이드 Sunlight B)",
         "section": "폴라로이드 Sunlight B",
         "x": 10.8,
-        "y": 82.8,
+        "y": 83.2,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -605,7 +605,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (폴라로이드 Sunlight B)",
         "section": "폴라로이드 Sunlight B",
         "x": 28.4,
-        "y": 82.8,
+        "y": 83.2,
         "w": 7,
         "h": 15.2,
         "radius": 6
@@ -705,7 +705,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (애플뮤직 예판)",
         "section": "애플뮤직 예판",
         "x": 86.6,
-        "y": 32.8,
+        "y": 29.7,
         "w": 11.5,
         "h": 9.5,
         "radius": 8
@@ -755,7 +755,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (위드뮤 예판)",
         "section": "위드뮤 예판",
         "x": 86.6,
-        "y": 51.1,
+        "y": 48.1,
         "w": 11.5,
         "h": 9.5,
         "radius": 8
@@ -845,7 +845,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (애플뮤직 팬싸)",
         "section": "애플뮤직 팬싸",
         "x": 86.6,
-        "y": 88,
+        "y": 85.3,
         "w": 11.5,
         "h": 9.5,
         "radius": 8
@@ -868,7 +868,7 @@ const PRESET_TEMPLATES = [
         "x": 4.2,
         "y": 26.2,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -878,7 +878,7 @@ const PRESET_TEMPLATES = [
         "x": 21.5,
         "y": 26.2,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -888,7 +888,7 @@ const PRESET_TEMPLATES = [
         "x": 38.8,
         "y": 26.2,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -898,7 +898,7 @@ const PRESET_TEMPLATES = [
         "x": 56.1,
         "y": 26.2,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -918,7 +918,7 @@ const PRESET_TEMPLATES = [
         "x": 4.2,
         "y": 39.5,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -928,7 +928,7 @@ const PRESET_TEMPLATES = [
         "x": 21.5,
         "y": 39.5,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -938,7 +938,7 @@ const PRESET_TEMPLATES = [
         "x": 38.8,
         "y": 39.5,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -948,7 +948,7 @@ const PRESET_TEMPLATES = [
         "x": 56.1,
         "y": 39.5,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -968,7 +968,7 @@ const PRESET_TEMPLATES = [
         "x": 4.2,
         "y": 52.8,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -978,7 +978,7 @@ const PRESET_TEMPLATES = [
         "x": 21.5,
         "y": 52.8,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -988,7 +988,7 @@ const PRESET_TEMPLATES = [
         "x": 38.8,
         "y": 52.8,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -998,7 +998,7 @@ const PRESET_TEMPLATES = [
         "x": 56.1,
         "y": 52.8,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -1018,7 +1018,7 @@ const PRESET_TEMPLATES = [
         "x": 4.2,
         "y": 64.5,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -1028,7 +1028,7 @@ const PRESET_TEMPLATES = [
         "x": 21.5,
         "y": 64.5,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -1038,7 +1038,7 @@ const PRESET_TEMPLATES = [
         "x": 38.8,
         "y": 64.5,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -1048,7 +1048,7 @@ const PRESET_TEMPLATES = [
         "x": 56.1,
         "y": 64.5,
         "w": 14.5,
-        "h": 11.22,
+        "h": 9.8,
         "radius": 8
       },
       {
@@ -1065,40 +1065,40 @@ const PRESET_TEMPLATES = [
         "id": "fore5_21",
         "name": "배두훈 (포토카드&스티커 C)",
         "section": "포토카드&스티커 C",
-        "x": 28.02,
+        "x": 29,
         "y": 75.8,
-        "w": 13.5,
-        "h": 10.2,
+        "w": 11.2,
+        "h": 7.8,
         "radius": 6
       },
       {
         "id": "fore5_22",
         "name": "강형호 (포토카드&스티커 C)",
         "section": "포토카드&스티커 C",
-        "x": 45.81,
+        "x": 42.2,
         "y": 75.8,
-        "w": 13.5,
-        "h": 10.2,
+        "w": 11.2,
+        "h": 7.8,
         "radius": 6
       },
       {
         "id": "fore5_23",
         "name": "조민규 (포토카드&스티커 C)",
         "section": "포토카드&스티커 C",
-        "x": 63.61,
+        "x": 55.4,
         "y": 75.8,
-        "w": 13.5,
-        "h": 8.75,
+        "w": 11.2,
+        "h": 7.8,
         "radius": 6
       },
       {
         "id": "fore5_24",
         "name": "고우림 (포토카드&스티커 C)",
         "section": "포토카드&스티커 C",
-        "x": 82.4,
+        "x": 68.6,
         "y": 75.8,
         "w": 11.2,
-        "h": 8.75,
+        "h": 7.8,
         "radius": 6
       },
       {
