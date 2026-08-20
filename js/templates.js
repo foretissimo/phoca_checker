@@ -5204,7 +5204,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (5만원 구매특전 A)",
         "section": "5만원 구매특전 A",
         "x": 7.8,
-        "y": 23.5,
+        "y": 18.76,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5214,7 +5214,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (5만원 구매특전 A)",
         "section": "5만원 구매특전 A",
         "x": 29.7,
-        "y": 23.5,
+        "y": 18.76,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5224,7 +5224,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (5만원 구매특전 A)",
         "section": "5만원 구매특전 A",
         "x": 51.6,
-        "y": 23.5,
+        "y": 18.76,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5234,7 +5234,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (5만원 구매특전 A)",
         "section": "5만원 구매특전 A",
         "x": 73.5,
-        "y": 23.5,
+        "y": 18.76,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5244,7 +5244,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (5만원 구매특전 B)",
         "section": "5만원 구매특전 B",
         "x": 7.8,
-        "y": 39,
+        "y": 34.89,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5254,7 +5254,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (5만원 구매특전 B)",
         "section": "5만원 구매특전 B",
         "x": 29.7,
-        "y": 39,
+        "y": 34.89,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5264,7 +5264,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (5만원 구매특전 B)",
         "section": "5만원 구매특전 B",
         "x": 51.6,
-        "y": 39,
+        "y": 34.89,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5274,7 +5274,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (5만원 구매특전 B)",
         "section": "5만원 구매특전 B",
         "x": 73.5,
-        "y": 39,
+        "y": 34.89,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5284,7 +5284,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (벨벳 파우치)",
         "section": "벨벳 파우치",
         "x": 7.8,
-        "y": 54.5,
+        "y": 51.18,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5294,7 +5294,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (벨벳 파우치)",
         "section": "벨벳 파우치",
         "x": 29.7,
-        "y": 54.5,
+        "y": 51.18,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5304,7 +5304,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (벨벳 파우치)",
         "section": "벨벳 파우치",
         "x": 51.6,
-        "y": 54.5,
+        "y": 51.18,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5314,7 +5314,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (벨벳 파우치)",
         "section": "벨벳 파우치",
         "x": 73.5,
-        "y": 54.5,
+        "y": 51.18,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5324,7 +5324,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (스카프)",
         "section": "스카프",
         "x": 7.8,
-        "y": 70,
+        "y": 67.31,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5334,7 +5334,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (스카프)",
         "section": "스카프",
         "x": 29.7,
-        "y": 70,
+        "y": 67.31,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5344,7 +5344,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (스카프)",
         "section": "스카프",
         "x": 51.6,
-        "y": 70,
+        "y": 67.31,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5354,7 +5354,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (스카프)",
         "section": "스카프",
         "x": 73.5,
-        "y": 70,
+        "y": 67.31,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5364,7 +5364,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (일회용 카메라 세트)",
         "section": "일회용 카메라 세트",
         "x": 7.8,
-        "y": 85.5,
+        "y": 84.24,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5374,7 +5374,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (일회용 카메라 세트)",
         "section": "일회용 카메라 세트",
         "x": 29.7,
-        "y": 85.5,
+        "y": 84.24,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5384,7 +5384,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (일회용 카메라 세트)",
         "section": "일회용 카메라 세트",
         "x": 51.6,
-        "y": 85.5,
+        "y": 84.24,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -5394,7 +5394,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (일회용 카메라 세트)",
         "section": "일회용 카메라 세트",
         "x": 73.5,
-        "y": 85.5,
+        "y": 84.24,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
