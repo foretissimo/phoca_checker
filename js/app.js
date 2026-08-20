@@ -54,6 +54,12 @@ class PhocaCheckerApp {
     this.btnExportBackup = document.getElementById('btn-export-backup');
     this.backupFileInput = document.getElementById('backup-file-input');
 
+    // Info & Notice Modal
+    this.btnOpenInfo = document.getElementById('btn-open-info');
+    this.btnNoticeTicker = document.getElementById('btn-notice-ticker');
+    this.infoModalBackdrop = document.getElementById('info-modal-backdrop');
+    this.btnCloseInfoModal = document.getElementById('close-info-modal-btn');
+
     // Trigger button for Template Drawer
     this.templateSelectorBtn = document.getElementById('template-selector-btn');
     this.currentTemplateTitleEl = document.getElementById('current-template-title');
@@ -141,6 +147,22 @@ class PhocaCheckerApp {
       this.backupFileInput.addEventListener('change', (e) => {
         const file = e.target.files?.[0];
         if (file) this.importBackupData(file);
+      });
+    }
+
+    // Info & Notice Modal
+    if (this.btnOpenInfo) {
+      this.btnOpenInfo.addEventListener('click', () => this.openInfoModal());
+    }
+    if (this.btnNoticeTicker) {
+      this.btnNoticeTicker.addEventListener('click', () => this.openInfoModal());
+    }
+    if (this.btnCloseInfoModal) {
+      this.btnCloseInfoModal.addEventListener('click', () => this.closeInfoModal());
+    }
+    if (this.infoModalBackdrop) {
+      this.infoModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === this.infoModalBackdrop) this.closeInfoModal();
       });
     }
 
@@ -233,7 +255,10 @@ class PhocaCheckerApp {
     const parts = hash.replace(/^#\//, '').split('/');
     const view = parts[0] || 'home';
 
-    if (view === 'checker' || view === 'fore') {
+    if (view === 'info' || view === 'about') {
+      this.showHomeView();
+      this.openInfoModal();
+    } else if (view === 'checker' || view === 'fore') {
       const categoryId = 'fore';
       const templateId = parts[1] || 'fore1';
       this.showCheckerView(categoryId, templateId);
@@ -442,6 +467,18 @@ class PhocaCheckerApp {
   // --------------------------------------------------------------------------
   // Backup / Restore Data (LocalStorage Export & Import)
   // --------------------------------------------------------------------------
+  openInfoModal() {
+    if (this.infoModalBackdrop) {
+      this.infoModalBackdrop.classList.add('open');
+    }
+  }
+
+  closeInfoModal() {
+    if (this.infoModalBackdrop) {
+      this.infoModalBackdrop.classList.remove('open');
+    }
+  }
+
   openBackupModal() {
     if (this.backupModalBackdrop) {
       this.backupModalBackdrop.classList.add('open');
