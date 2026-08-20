@@ -4872,8 +4872,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_1",
         "name": "배두훈 (마이스타굿즈 팬싸)",
         "section": "마이스타굿즈 팬싸",
-        "x": 2.5,
-        "y": 48.5,
+        "x": 2.1,
+        "y": 44.53,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4882,8 +4882,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_2",
         "name": "강형호 (마이스타굿즈 팬싸)",
         "section": "마이스타굿즈 팬싸",
-        "x": 14.4,
-        "y": 48.5,
+        "x": 14.2,
+        "y": 44.53,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4892,8 +4892,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_3",
         "name": "조민규 (마이스타굿즈 팬싸)",
         "section": "마이스타굿즈 팬싸",
-        "x": 26.3,
-        "y": 48.5,
+        "x": 26.1,
+        "y": 44.53,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4902,8 +4902,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_4",
         "name": "고우림 (마이스타굿즈 팬싸)",
         "section": "마이스타굿즈 팬싸",
-        "x": 38.2,
-        "y": 48.5,
+        "x": 38,
+        "y": 44.53,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4913,7 +4913,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (제이제이뮤즈 예판)",
         "section": "제이제이뮤즈 예판",
         "x": 51.5,
-        "y": 15.5,
+        "y": 6,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4923,7 +4923,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (제이제이뮤즈 예판)",
         "section": "제이제이뮤즈 예판",
         "x": 63.4,
-        "y": 15.5,
+        "y": 6,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4933,7 +4933,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (제이제이뮤즈 예판)",
         "section": "제이제이뮤즈 예판",
         "x": 75.3,
-        "y": 15.5,
+        "y": 6,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4942,8 +4942,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_8",
         "name": "고우림 (제이제이뮤즈 예판)",
         "section": "제이제이뮤즈 예판",
-        "x": 87.2,
-        "y": 15.5,
+        "x": 87.4,
+        "y": 6,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4952,8 +4952,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_9",
         "name": "배두훈 (제이제이뮤즈 팬싸)",
         "section": "제이제이뮤즈 팬싸",
-        "x": 2.5,
-        "y": 65.5,
+        "x": 2.1,
+        "y": 63.76,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4962,8 +4962,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_10",
         "name": "강형호 (제이제이뮤즈 팬싸)",
         "section": "제이제이뮤즈 팬싸",
-        "x": 14.4,
-        "y": 65.5,
+        "x": 14.2,
+        "y": 63.76,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4972,8 +4972,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_11",
         "name": "조민규 (제이제이뮤즈 팬싸)",
         "section": "제이제이뮤즈 팬싸",
-        "x": 26.3,
-        "y": 65.5,
+        "x": 26.1,
+        "y": 63.76,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4982,8 +4982,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_12",
         "name": "고우림 (제이제이뮤즈 팬싸)",
         "section": "제이제이뮤즈 팬싸",
-        "x": 38.2,
-        "y": 65.5,
+        "x": 38,
+        "y": 63.76,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -4993,7 +4993,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (마이스타굿즈 예판)",
         "section": "마이스타굿즈 예판",
         "x": 51.5,
-        "y": 32,
+        "y": 25.05,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5003,7 +5003,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (마이스타굿즈 예판)",
         "section": "마이스타굿즈 예판",
         "x": 63.4,
-        "y": 32,
+        "y": 25.05,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5013,7 +5013,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (마이스타굿즈 예판)",
         "section": "마이스타굿즈 예판",
         "x": 75.3,
-        "y": 32,
+        "y": 25.05,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5022,8 +5022,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_16",
         "name": "고우림 (마이스타굿즈 예판)",
         "section": "마이스타굿즈 예판",
-        "x": 87.2,
-        "y": 32,
+        "x": 87.4,
+        "y": 25.05,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5032,8 +5032,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_17",
         "name": "배두훈 (뮤직아트 팬싸)",
         "section": "뮤직아트 팬싸",
-        "x": 2.5,
-        "y": 82.5,
+        "x": 2.1,
+        "y": 83.09,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5042,8 +5042,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_18",
         "name": "강형호 (뮤직아트 팬싸)",
         "section": "뮤직아트 팬싸",
-        "x": 14.4,
-        "y": 82.5,
+        "x": 14.2,
+        "y": 83.09,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5052,8 +5052,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_19",
         "name": "조민규 (뮤직아트 팬싸)",
         "section": "뮤직아트 팬싸",
-        "x": 26.3,
-        "y": 82.5,
+        "x": 26.1,
+        "y": 83.09,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5062,8 +5062,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_20",
         "name": "고우림 (뮤직아트 팬싸)",
         "section": "뮤직아트 팬싸",
-        "x": 38.2,
-        "y": 82.5,
+        "x": 38,
+        "y": 83.09,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5073,7 +5073,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Ktown4U 예판)",
         "section": "Ktown4U 예판",
         "x": 51.5,
-        "y": 48.5,
+        "y": 44.53,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5083,7 +5083,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (Ktown4U 예판)",
         "section": "Ktown4U 예판",
         "x": 63.4,
-        "y": 48.5,
+        "y": 44.53,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5093,7 +5093,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Ktown4U 예판)",
         "section": "Ktown4U 예판",
         "x": 75.3,
-        "y": 48.5,
+        "y": 44.53,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5102,8 +5102,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_24",
         "name": "고우림 (Ktown4U 예판)",
         "section": "Ktown4U 예판",
-        "x": 87.2,
-        "y": 48.5,
+        "x": 87.4,
+        "y": 44.53,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5113,7 +5113,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (위드뮤 예판)",
         "section": "위드뮤 예판",
         "x": 51.5,
-        "y": 65.5,
+        "y": 63.76,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5123,7 +5123,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (위드뮤 예판)",
         "section": "위드뮤 예판",
         "x": 63.4,
-        "y": 65.5,
+        "y": 63.76,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5133,7 +5133,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (위드뮤 예판)",
         "section": "위드뮤 예판",
         "x": 75.3,
-        "y": 65.5,
+        "y": 63.76,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5142,8 +5142,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_28",
         "name": "고우림 (위드뮤 예판)",
         "section": "위드뮤 예판",
-        "x": 87.2,
-        "y": 65.5,
+        "x": 87.4,
+        "y": 63.76,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5153,7 +5153,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (뮤직아트 예판)",
         "section": "뮤직아트 예판",
         "x": 51.5,
-        "y": 82.5,
+        "y": 83.09,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5163,7 +5163,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (뮤직아트 예판)",
         "section": "뮤직아트 예판",
         "x": 63.4,
-        "y": 82.5,
+        "y": 83.09,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5173,7 +5173,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (뮤직아트 예판)",
         "section": "뮤직아트 예판",
         "x": 75.3,
-        "y": 82.5,
+        "y": 83.09,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
@@ -5182,8 +5182,8 @@ const PRESET_TEMPLATES = [
         "id": "fore22_32",
         "name": "고우림 (뮤직아트 예판)",
         "section": "뮤직아트 예판",
-        "x": 87.2,
-        "y": 82.5,
+        "x": 87.4,
+        "y": 83.09,
         "w": 10.5,
         "h": 14.5,
         "radius": 6
