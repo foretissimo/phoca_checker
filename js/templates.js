@@ -1570,7 +1570,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 1.8,
-        "y": 32,
+        "y": 33.11,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1580,7 +1580,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 8.6,
-        "y": 32,
+        "y": 33.11,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1590,7 +1590,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 15.4,
-        "y": 32,
+        "y": 33.11,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1600,7 +1600,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 22.2,
-        "y": 32,
+        "y": 33.11,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1610,7 +1610,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 1.8,
-        "y": 48,
+        "y": 49.74,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1620,7 +1620,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 8.6,
-        "y": 48,
+        "y": 49.74,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1630,7 +1630,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 15.4,
-        "y": 48,
+        "y": 49.74,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1640,7 +1640,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 22.2,
-        "y": 48,
+        "y": 49.74,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1650,7 +1650,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 1.8,
-        "y": 64.5,
+        "y": 66.4,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1660,7 +1660,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 8.6,
-        "y": 64.5,
+        "y": 66.4,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1670,7 +1670,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 15.4,
-        "y": 64.5,
+        "y": 66.4,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1680,7 +1680,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 22.2,
-        "y": 64.5,
+        "y": 66.4,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1690,7 +1690,7 @@ const PRESET_TEMPLATES = [
         "name": "유닛/단체 13 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 1.8,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1700,7 +1700,7 @@ const PRESET_TEMPLATES = [
         "name": "유닛/단체 14 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 8.6,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1710,7 +1710,7 @@ const PRESET_TEMPLATES = [
         "name": "유닛/단체 15 (틴케이스 A ver.)",
         "section": "틴케이스 A ver.",
         "x": 15.4,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1720,7 +1720,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 A (가로)",
         "section": "틴케이스 A ver.",
         "x": 22.2,
-        "y": 83.5,
+        "y": 87.92,
         "w": 8.8,
         "h": 10,
         "radius": 6
@@ -1730,7 +1730,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 32.2,
-        "y": 32,
+        "y": 33.11,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1740,7 +1740,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 39,
-        "y": 32,
+        "y": 33.11,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1750,7 +1750,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 45.8,
-        "y": 32,
+        "y": 33.11,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1760,7 +1760,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 52.6,
-        "y": 32,
+        "y": 33.11,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1770,7 +1770,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 32.2,
-        "y": 48,
+        "y": 49.74,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1780,7 +1780,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 39,
-        "y": 48,
+        "y": 49.74,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1790,7 +1790,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 45.8,
-        "y": 48,
+        "y": 49.74,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1800,7 +1800,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 52.6,
-        "y": 48,
+        "y": 49.74,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1810,7 +1810,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 32.2,
-        "y": 64.5,
+        "y": 66.4,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1820,7 +1820,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 39,
-        "y": 64.5,
+        "y": 66.4,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1830,7 +1830,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 45.8,
-        "y": 64.5,
+        "y": 66.4,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1840,7 +1840,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 52.6,
-        "y": 64.5,
+        "y": 66.4,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1850,7 +1850,7 @@ const PRESET_TEMPLATES = [
         "name": "유닛/단체 29 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 32.2,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1860,7 +1860,7 @@ const PRESET_TEMPLATES = [
         "name": "유닛/단체 30 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 39,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1870,7 +1870,7 @@ const PRESET_TEMPLATES = [
         "name": "유닛/단체 31 (틴케이스 B ver.)",
         "section": "틴케이스 B ver.",
         "x": 45.8,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -1880,7 +1880,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 B (가로)",
         "section": "틴케이스 B ver.",
         "x": 52.6,
-        "y": 83.5,
+        "y": 87.92,
         "w": 8.8,
         "h": 10,
         "radius": 6
@@ -1919,7 +1919,7 @@ const PRESET_TEMPLATES = [
         "id": "fore9_keya_36",
         "name": "미니 36 (미니 키링 A)",
         "section": "미니 키링 A",
-        "x": 54,
+        "x": 54.8,
         "y": 6.2,
         "w": 3.4,
         "h": 7.8,
@@ -1930,7 +1930,7 @@ const PRESET_TEMPLATES = [
         "name": "미니 37 (미니 키링 B)",
         "section": "미니 키링 B",
         "x": 42.6,
-        "y": 19,
+        "y": 19.79,
         "w": 3.4,
         "h": 7.8,
         "radius": 4
@@ -1940,7 +1940,7 @@ const PRESET_TEMPLATES = [
         "name": "미니 38 (미니 키링 B)",
         "section": "미니 키링 B",
         "x": 46.4,
-        "y": 19,
+        "y": 19.79,
         "w": 3.4,
         "h": 7.8,
         "radius": 4
@@ -1950,7 +1950,7 @@ const PRESET_TEMPLATES = [
         "name": "미니 39 (미니 키링 B)",
         "section": "미니 키링 B",
         "x": 50.2,
-        "y": 19,
+        "y": 19.79,
         "w": 3.4,
         "h": 7.8,
         "radius": 4
@@ -1959,8 +1959,8 @@ const PRESET_TEMPLATES = [
         "id": "fore9_keyb_40",
         "name": "미니 40 (미니 키링 B)",
         "section": "미니 키링 B",
-        "x": 54,
-        "y": 19,
+        "x": 54.8,
+        "y": 19.79,
         "w": 3.4,
         "h": 7.8,
         "radius": 4
@@ -1972,7 +1972,7 @@ const PRESET_TEMPLATES = [
         "x": 62.6,
         "y": 6.2,
         "w": 5.8,
-        "h": 14.8,
+        "h": 15.59,
         "radius": 6
       },
       {
@@ -1982,7 +1982,7 @@ const PRESET_TEMPLATES = [
         "x": 69.2,
         "y": 6.2,
         "w": 5.8,
-        "h": 14.8,
+        "h": 15.59,
         "radius": 6
       },
       {
@@ -1992,7 +1992,7 @@ const PRESET_TEMPLATES = [
         "x": 75.8,
         "y": 6.2,
         "w": 5.8,
-        "h": 14.8,
+        "h": 15.59,
         "radius": 6
       },
       {
@@ -2002,7 +2002,7 @@ const PRESET_TEMPLATES = [
         "x": 82.4,
         "y": 6.2,
         "w": 5.8,
-        "h": 14.8,
+        "h": 15.59,
         "radius": 6
       },
       {
@@ -2012,7 +2012,7 @@ const PRESET_TEMPLATES = [
         "x": 62.6,
         "y": 25.5,
         "w": 5.8,
-        "h": 14.8,
+        "h": 15.59,
         "radius": 6
       },
       {
@@ -2022,7 +2022,7 @@ const PRESET_TEMPLATES = [
         "x": 69.2,
         "y": 25.5,
         "w": 5.8,
-        "h": 14.8,
+        "h": 15.59,
         "radius": 6
       },
       {
@@ -2032,7 +2032,7 @@ const PRESET_TEMPLATES = [
         "x": 75.8,
         "y": 25.5,
         "w": 5.8,
-        "h": 14.8,
+        "h": 15.59,
         "radius": 6
       },
       {
@@ -2042,7 +2042,7 @@ const PRESET_TEMPLATES = [
         "x": 82.4,
         "y": 25.5,
         "w": 5.8,
-        "h": 14.8,
+        "h": 15.59,
         "radius": 6
       },
       {
@@ -2050,7 +2050,7 @@ const PRESET_TEMPLATES = [
         "name": "미니 파우치 단체",
         "section": "미니 파우치",
         "x": 89.2,
-        "y": 28,
+        "y": 31.09,
         "w": 8.8,
         "h": 10,
         "radius": 6
@@ -2060,7 +2060,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (우산)",
         "section": "우산",
         "x": 62.6,
-        "y": 44,
+        "y": 44.95,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2070,7 +2070,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (우산)",
         "section": "우산",
         "x": 69.2,
-        "y": 44,
+        "y": 44.95,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2080,7 +2080,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (우산)",
         "section": "우산",
         "x": 75.8,
-        "y": 44,
+        "y": 44.95,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2090,7 +2090,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (우산)",
         "section": "우산",
         "x": 82.4,
-        "y": 44,
+        "y": 44.95,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2100,7 +2100,7 @@ const PRESET_TEMPLATES = [
         "name": "우산 단체",
         "section": "우산",
         "x": 89.2,
-        "y": 46.5,
+        "y": 49.74,
         "w": 8.8,
         "h": 10,
         "radius": 6
@@ -2110,7 +2110,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (우비)",
         "section": "우비",
         "x": 62.6,
-        "y": 62.5,
+        "y": 64.24,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2120,7 +2120,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (우비)",
         "section": "우비",
         "x": 69.2,
-        "y": 62.5,
+        "y": 64.24,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2130,7 +2130,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (우비)",
         "section": "우비",
         "x": 75.8,
-        "y": 62.5,
+        "y": 64.24,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2140,7 +2140,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (우비)",
         "section": "우비",
         "x": 82.4,
-        "y": 62.5,
+        "y": 64.24,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2150,7 +2150,7 @@ const PRESET_TEMPLATES = [
         "name": "우비 단체",
         "section": "우비",
         "x": 89.2,
-        "y": 65,
+        "y": 69.04,
         "w": 8.8,
         "h": 10,
         "radius": 6
@@ -2160,7 +2160,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (피크닉 매트)",
         "section": "피크닉 매트",
         "x": 62.6,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2170,7 +2170,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (피크닉 매트)",
         "section": "피크닉 매트",
         "x": 69.2,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2180,7 +2180,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (피크닉 매트)",
         "section": "피크닉 매트",
         "x": 75.8,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2190,7 +2190,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (피크닉 매트)",
         "section": "피크닉 매트",
         "x": 82.4,
-        "y": 81,
+        "y": 83.12,
         "w": 5.8,
         "h": 14.8,
         "radius": 6
@@ -2200,7 +2200,7 @@ const PRESET_TEMPLATES = [
         "name": "피크닉 매트 단체",
         "section": "피크닉 매트",
         "x": 89.2,
-        "y": 83.5,
+        "y": 87.92,
         "w": 8.8,
         "h": 10,
         "radius": 6
