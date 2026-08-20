@@ -72,6 +72,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  gap: 1rem;
 }
 
 .brand-section {
@@ -117,6 +118,30 @@ body {
   font-weight: 600;
 }
 
+.header-credits {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.credit-link {
+  color: #a5b4fc;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(99, 102, 241, 0.12);
+  transition: all 0.2s ease;
+}
+
+.credit-link:hover {
+  background: rgba(99, 102, 241, 0.25);
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -124,7 +149,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   View Switching (Critical Layout Isolation)
+   View Switching
    -------------------------------------------------------------------------- */
 .view-container {
   display: none;
@@ -141,6 +166,7 @@ body {
   max-width: 1120px;
   margin: 0 auto;
   padding: 2.5rem 1.25rem;
+  flex: 1;
 }
 
 .hero-banner {
@@ -173,7 +199,7 @@ body {
 .hero-desc {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  max-width: 520px;
+  max-width: 540px;
   margin: 0 auto;
 }
 
@@ -208,11 +234,6 @@ body {
 .category-card.disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-.category-card.disabled:hover {
-  transform: none;
-  box-shadow: none;
-  border-color: var(--border-color);
 }
 
 .cat-top {
@@ -277,6 +298,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  flex: 1;
 }
 
 /* Top Control Bar */
@@ -293,7 +315,6 @@ body {
   gap: 0.85rem;
 }
 
-/* Current Template Selector Trigger Button */
 .template-selector-btn {
   display: inline-flex;
   align-items: center;
@@ -409,6 +430,13 @@ body {
   box-shadow: 0 4px 12px var(--success-glow);
 }
 
+.btn-purple {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+}
+
 .btn-sm {
   padding: 0.4rem 0.7rem;
   font-size: 0.78rem;
@@ -425,9 +453,7 @@ body {
   color: #fff;
 }
 
-/* --------------------------------------------------------------------------
-   Navigation Toolbar (Prev / Next & Stats)
-   -------------------------------------------------------------------------- */
+/* Navigation Toolbar */
 .nav-pager-bar {
   display: flex;
   align-items: center;
@@ -464,13 +490,11 @@ body {
   transition: width 0.3s ease;
 }
 
-/* --------------------------------------------------------------------------
-   Photocard Canvas & Viewport
-   -------------------------------------------------------------------------- */
+/* Photocard Canvas Viewport */
 .canvas-section {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   min-height: 480px;
   position: relative;
 }
@@ -529,7 +553,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(16, 17, 24, 0.72);
+  background: rgba(16, 17, 24, 0.68);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   opacity: 0;
@@ -561,8 +585,23 @@ body {
   transform: scale(1);
 }
 
+.floating-download-btn {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 50;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.image-credit-banner {
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 /* --------------------------------------------------------------------------
-   3. Template Drawer / Bottom Sheet Modal
+   3. Template Drawer
    -------------------------------------------------------------------------- */
 .drawer-backdrop {
   position: fixed;
@@ -638,11 +677,6 @@ body {
   color: var(--text-primary);
   font-size: 0.88rem;
   outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.search-input:focus {
-  border-color: var(--accent-primary);
 }
 
 .search-icon {
@@ -675,12 +709,6 @@ body {
   color: var(--text-secondary);
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.pill-btn:hover {
-  color: var(--text-primary);
-  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .pill-btn.active {
@@ -704,11 +732,11 @@ body {
   border-radius: var(--radius-md);
   padding: 0.8rem 1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
+  transition: all 0.2s ease;
 }
 
 .template-item-card:hover {
@@ -771,7 +799,6 @@ body {
   gap: 0.25rem;
 }
 
-/* Status Badges */
 .badge-status {
   font-size: 0.72rem;
   font-weight: 700;
@@ -815,7 +842,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   4. Visual Template Editor Drawer
+   4. Visual Template Editor Drawer & Magnet Guides
    -------------------------------------------------------------------------- */
 .editor-drawer {
   display: none;
@@ -833,7 +860,7 @@ body {
 .editor-card-box {
   position: absolute;
   border: 2px dashed #ec4899;
-  background: rgba(236, 72, 153, 0.2);
+  background: rgba(236, 72, 153, 0.22);
   cursor: move;
   box-sizing: border-box;
   z-index: 30;
@@ -841,8 +868,8 @@ body {
 
 .editor-card-box.selected {
   border: 2px solid #38bdf8;
-  background: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+  background: rgba(56, 189, 248, 0.38);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
 }
 
 .editor-badge {
@@ -860,13 +887,38 @@ body {
 
 .resize-handle {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background: #38bdf8;
-  border-radius: 2px;
-  right: -6px;
-  bottom: -6px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  right: -7px;
+  bottom: -7px;
   cursor: nwse-resize;
+  z-index: 40;
+}
+
+/* Smart Magnet Snap Guide Lines */
+.snap-guide-h {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+  pointer-events: none;
+  z-index: 35;
+}
+
+.snap-guide-v {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+  pointer-events: none;
+  z-index: 35;
 }
 
 .editor-grid-form {
@@ -902,8 +954,19 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Toast Notifications
+   App Footer
    -------------------------------------------------------------------------- */
+.app-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background: var(--bg-primary);
+}
+
+/* Toast Notifications */
 .toast-container {
   position: fixed;
   bottom: 2rem;
@@ -946,12 +1009,14 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* --------------------------------------------------------------------------
-   Mobile Responsive Optimizations
-   -------------------------------------------------------------------------- */
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .app-header {
     padding: 0.6rem 1rem;
+    flex-wrap: wrap;
+  }
+  .header-credits {
+    display: none;
   }
   .hero-title {
     font-size: 1.5rem;
@@ -985,7 +1050,6 @@ body {
     justify-content: space-between;
   }
 
-  /* Bottom Sheet Drawer on Mobile */
   .template-drawer {
     right: 0;
     left: 0;
@@ -1000,10 +1064,6 @@ body {
     transform: translateY(100%);
   }
 
-  .drawer-backdrop.open .template-drawer {
-    transform: translateY(0);
-  }
-
   .toast-container {
     left: 1rem;
     right: 1rem;
@@ -1014,7 +1074,7 @@ body {
   </style>
 </head>
 <body>
-  <!-- Header & Breadcrumbs Navbar -->
+  <!-- Header & Navbar -->
   <header class="app-header">
     <div class="brand-section" id="btn-nav-home">
       <div class="brand-icon">
@@ -1029,23 +1089,42 @@ body {
       </div>
     </div>
 
+    <!-- Navigation Breadcrumbs -->
     <div class="nav-breadcrumbs" id="nav-breadcrumbs">
       <span id="nav-category-name" style="display: none;">> 포레스텔라</span>
       <span id="nav-template-name" style="display: none;"></span>
     </div>
 
+    <!-- Header Attribution Credits -->
+    <div class="header-credits">
+      <span>도안 출처:</span>
+      <a href="http://x.com/sy_fore" target="_blank" rel="noopener" class="credit-link">@sy_fore</a>
+      <span>|</span>
+      <a href="https://t.co/fEts76yenI" target="_blank" rel="noopener" class="credit-link">Notion</a>
+    </div>
+
+    <!-- Header Action Buttons -->
     <div class="header-actions">
+      <button id="btn-export-all-merged" class="btn btn-purple btn-sm" title="현재 카테고리 전체 39종을 1장의 고화질 포스터 이미지로 일괄 다운로드">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="3" y1="9" x2="21" y2="9"></line>
+          <line x1="9" y1="21" x2="9" y2="9"></line>
+        </svg>
+        전체 합본 다운로드
+      </button>
+
       <label for="custom-image-upload" class="btn btn-sm" title="내 포토카드 판 이미지 불러오기">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="17 8 12 3 7 8"></polyline>
-          <line x1="12" y1="3" x2="12" y2="15"></line>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
         </svg>
         이미지 열기
       </label>
       <input type="file" id="custom-image-upload" accept="image/*" style="display: none;">
 
-      <button id="toggle-editor-btn" class="btn btn-sm" title="영역 편집 / 신규 템플릿 제작 도구">
+      <button id="toggle-editor-btn" class="btn btn-sm" title="영역 편집 / 자석 스냅 / 깃헙 직접 저장">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"></circle>
           <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
@@ -1064,7 +1143,7 @@ body {
         <span>✨</span> 포토카드 체크리스트 & 위시리스트 생성기
       </div>
       <h2 class="hero-title">카테고리를 선택하세요</h2>
-      <p class="hero-desc">보유한 포토카드를 클릭하여 가리거나 남기고, 고화질 완성본 이미지를 다운로드하세요.</p>
+      <p class="hero-desc">보유한 포토카드를 클릭하여 체크하고, 1장 개별 다운로드 또는 전체 39종 합본 포스터로 다운로드하세요.</p>
     </div>
 
     <div class="categories-grid" id="categories-grid">
@@ -1085,7 +1164,7 @@ body {
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
-        <span id="current-template-title">fore1. 미스티크 리스트</span>
+        <span id="current-template-title">fore1. 미스티크</span>
         <span id="current-template-tag" class="template-tag-badge">#콘서트/MD</span>
         <span id="current-template-status" class="template-status-pill badge-status empty">0/8장</span>
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
@@ -1100,29 +1179,29 @@ body {
             <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
             <line x1="1" y1="1" x2="23" y2="23"></line>
           </svg>
-          보유 포카 가리기
+          보유 포카 가리기 (위시리스트)
         </button>
         <button id="mode-hide-unowned" class="seg-btn" title="미보유 포카를 회색으로 가려 보유 컬렉션 강조">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
             <circle cx="12" cy="12" r="3"></circle>
           </svg>
-          미보유 포카 가리기
+          미보유 포카 가리기 (보유본)
         </button>
       </div>
 
-      <!-- 3. Bulk Selection & Export Actions -->
+      <!-- 3. Bulk Actions & Export -->
       <div class="control-group-actions" style="display: flex; gap: 0.4rem; align-items: center;">
         <button id="btn-select-all" class="btn btn-sm" title="모두 보유로 선택">전체 선택</button>
         <button id="btn-deselect-all" class="btn btn-sm" title="선택 해제">전체 해제</button>
         <button id="btn-invert-selection" class="btn btn-sm" title="선택 반전">반전</button>
-        <button id="btn-export-png" class="btn btn-success btn-sm" title="완성된 체크리스트 고화질 PNG 다운로드">
+        <button id="btn-export-png" class="btn btn-success btn-sm" title="완성된 체크리스트 고화질 PNG 다운로드 (1장)">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          다운로드
+          다운로드 (1장)
         </button>
       </div>
     </section>
@@ -1154,10 +1233,16 @@ body {
       </button>
     </section>
 
-    <!-- Visual Editor Drawer (Admin/Creator Tool) -->
+    <!-- Visual Editor Drawer (Smart Magnet & Direct GitHub Save) -->
     <section id="editor-drawer" class="editor-drawer">
-      <div class="editor-header">
-        <h3>🛠️ 포토카드 영역 편집기 (그리드 생성 & 미세조정)</h3>
+      <div class="editor-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <h3 style="font-size: 1.05rem; font-weight: 700;">🛠️ 포토카드 영역 편집기</h3>
+          <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: #38bdf8; cursor: pointer;">
+            <input type="checkbox" id="snap-magnet-toggle" checked>
+            🧲 마그넷 자석 스냅 켜짐
+          </label>
+        </div>
         <button id="close-editor-btn" class="btn btn-sm">닫기</button>
       </div>
 
@@ -1178,27 +1263,27 @@ body {
         </div>
         <div class="form-field">
           <label>시작 X (%)</label>
-          <input type="number" id="grid-start-x" value="7.8" step="0.1">
+          <input type="number" id="grid-start-x" value="4.2" step="0.1">
         </div>
         <div class="form-field">
           <label>시작 Y (%)</label>
-          <input type="number" id="grid-start-y" value="48.0" step="0.1">
+          <input type="number" id="grid-start-y" value="35.8" step="0.1">
         </div>
         <div class="form-field">
           <label>카드 가로 (%)</label>
-          <input type="number" id="grid-card-w" value="18.5" step="0.1">
+          <input type="number" id="grid-card-w" value="14.37" step="0.1">
         </div>
         <div class="form-field">
           <label>카드 세로 (%)</label>
-          <input type="number" id="grid-card-h" value="22.0" step="0.1">
+          <input type="number" id="grid-card-h" value="14.73" step="0.1">
         </div>
         <div class="form-field">
           <label>가로 간격 (%)</label>
-          <input type="number" id="grid-gap-x" value="3.5" step="0.1">
+          <input type="number" id="grid-gap-x" value="3.0" step="0.1">
         </div>
         <div class="form-field">
           <label>세로 간격 (%)</label>
-          <input type="number" id="grid-gap-y" value="3.5" step="0.1">
+          <input type="number" id="grid-gap-y" value="3.0" step="0.1">
         </div>
         <div class="form-field">
           <label>모서리 둥글기 (px)</label>
@@ -1212,11 +1297,12 @@ body {
         <button id="btn-delete-box" class="btn btn-sm">선택 박스 삭제</button>
         <button id="btn-clear-boxes" class="btn btn-sm">전체 초기화</button>
         <button id="btn-apply-template" class="btn btn-success btn-sm">현재 화면에 적용</button>
+        <button id="btn-save-github" class="btn btn-purple btn-sm" title="수정된 템플릿 좌표를 GitHub에 커밋하여 즉시 배포">💾 깃헙에 저장 (즉시 배포)</button>
       </div>
 
       <div class="form-field">
         <label>생성된 JSON 설정 데이터</label>
-        <textarea id="editor-json-output" class="json-textarea" style="height: 90px;" readonly></textarea>
+        <textarea id="editor-json-output" class="json-textarea" style="height: 80px;" readonly></textarea>
         <div style="margin-top: 0.4rem;">
           <button id="btn-copy-json" class="btn btn-sm">📋 JSON 복사하기</button>
         </div>
@@ -1228,6 +1314,20 @@ body {
       <div id="image-wrapper" class="image-wrapper">
         <img id="main-sheet-image" class="main-image" src="" alt="포토카드 리스트 이미지">
         <div id="card-overlay-container" class="card-overlay-container"></div>
+        
+        <!-- In-Image Quick Download Action -->
+        <button id="btn-floating-export" class="btn btn-success btn-sm floating-download-btn" title="이 포카판 고화질 이미지 다운로드">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          이미지 다운로드
+        </button>
+      </div>
+
+      <div class="image-credit-banner">
+        포토카드 도안 출처: <a href="http://x.com/sy_fore" target="_blank" rel="noopener" class="credit-link">@sy_fore</a> | <a href="https://t.co/fEts76yenI" target="_blank" rel="noopener" class="credit-link">Notion 정리본</a>
       </div>
     </section>
   </main>
@@ -1259,24 +1359,29 @@ body {
           <input type="text" id="drawer-search-input" class="search-input" placeholder="포카판 제목 검색 (예: 월드트리, 키트...)">
         </div>
 
-        <div class="filter-pills-row" id="drawer-tags-container">
-          <!-- Tag filter pills generated dynamically -->
-        </div>
+        <div class="filter-pills-row" id="drawer-tags-container"></div>
+
+        <button id="btn-drawer-export-merged" class="btn btn-purple btn-sm" style="width: 100%; justify-content: center; margin-top: 0.3rem;">
+          🖼️ 전체 39종 합본 포스터로 다운로드
+        </button>
       </div>
 
-      <div class="drawer-list-container" id="drawer-list-container">
-        <!-- List item cards generated dynamically with live progress badges -->
-      </div>
+      <div class="drawer-list-container" id="drawer-list-container"></div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>포카 체커 (Phoca Checker) • 포토카드 도안 출처: <a href="http://x.com/sy_fore" target="_blank" rel="noopener" class="credit-link">@sy_fore</a> | <a href="https://t.co/fEts76yenI" target="_blank" rel="noopener" class="credit-link">Notion</a></p>
+  </footer>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>
 
   <!-- Scripts -->
-  <script src="js/templates.js?v=3.1.0"></script>
-  <script src="js/canvas-export.js?v=3.1.0"></script>
-  <script src="js/editor.js?v=3.1.0"></script>
-  <script src="js/app.js?v=3.1.0"></script>
+  <script src="js/templates.js?v=4.0.0"></script>
+  <script src="js/canvas-export.js?v=4.0.0"></script>
+  <script src="js/editor.js?v=4.0.0"></script>
+  <script src="js/app.js?v=4.0.0"></script>
 </body>
 </html>
