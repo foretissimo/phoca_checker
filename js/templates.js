@@ -844,8 +844,8 @@ const PRESET_TEMPLATES = [
         "id": "fore4_43",
         "name": "단체 (애플뮤직 팬싸)",
         "section": "애플뮤직 팬싸",
-        "x": 86.6,
-        "y": 85.3,
+        "x": 86.7,
+        "y": 88.2,
         "w": 11.5,
         "h": 9.5,
         "radius": 8
