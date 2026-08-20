@@ -906,7 +906,7 @@ const PRESET_TEMPLATES = [
         "name": "방석 (단체)",
         "section": "방석",
         "x": 73.4,
-        "y": 29.8,
+        "y": 29.9,
         "w": 22.5,
         "h": 6.8,
         "radius": 8
@@ -955,8 +955,8 @@ const PRESET_TEMPLATES = [
         "id": "fore5_10",
         "name": "티셔츠 (단체)",
         "section": "티셔츠",
-        "x": 73.4,
-        "y": 43.5,
+        "x": 73.5,
+        "y": 43.4,
         "w": 22.5,
         "h": 6.8,
         "radius": 8
@@ -1006,7 +1006,7 @@ const PRESET_TEMPLATES = [
         "name": "포카세트 A (단체)",
         "section": "포토카드&스티커",
         "x": 73.4,
-        "y": 56.5,
+        "y": 56.6,
         "w": 22.5,
         "h": 6.8,
         "radius": 8
@@ -1018,7 +1018,7 @@ const PRESET_TEMPLATES = [
         "x": 4.2,
         "y": 64.5,
         "w": 14.5,
-        "h": 9.8,
+        "h": 10.99,
         "radius": 8
       },
       {
@@ -1028,7 +1028,7 @@ const PRESET_TEMPLATES = [
         "x": 21.5,
         "y": 64.5,
         "w": 14.5,
-        "h": 9.8,
+        "h": 10.99,
         "radius": 8
       },
       {
@@ -1038,7 +1038,7 @@ const PRESET_TEMPLATES = [
         "x": 38.8,
         "y": 64.5,
         "w": 14.5,
-        "h": 9.8,
+        "h": 10.99,
         "radius": 8
       },
       {
@@ -1048,7 +1048,7 @@ const PRESET_TEMPLATES = [
         "x": 56.1,
         "y": 64.5,
         "w": 14.5,
-        "h": 9.8,
+        "h": 10.99,
         "radius": 8
       },
       {
