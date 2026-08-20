@@ -2221,7 +2221,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (구매특전)",
         "section": "구매특전",
         "x": 2.8,
-        "y": 23.5,
+        "y": 24.76,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2231,7 +2231,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (구매특전)",
         "section": "구매특전",
         "x": 11.8,
-        "y": 23.5,
+        "y": 24.76,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2241,7 +2241,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (구매특전)",
         "section": "구매특전",
         "x": 20.8,
-        "y": 23.5,
+        "y": 24.76,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2250,8 +2250,8 @@ const PRESET_TEMPLATES = [
         "id": "fore10_4",
         "name": "고우림 (구매특전)",
         "section": "구매특전",
-        "x": 29.8,
-        "y": 23.5,
+        "x": 28.6,
+        "y": 24.76,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2260,8 +2260,8 @@ const PRESET_TEMPLATES = [
         "id": "fore10_5",
         "name": "구매특전 단체",
         "section": "구매특전",
-        "x": 37.8,
-        "y": 26,
+        "x": 37.6,
+        "y": 29.76,
         "w": 11.5,
         "h": 9.8,
         "radius": 6
@@ -2271,7 +2271,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (금속목걸이)",
         "section": "금속목걸이",
         "x": 2.8,
-        "y": 42.5,
+        "y": 43.92,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2281,7 +2281,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (금속목걸이)",
         "section": "금속목걸이",
         "x": 11.8,
-        "y": 42.5,
+        "y": 43.92,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2291,7 +2291,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (금속목걸이)",
         "section": "금속목걸이",
         "x": 20.8,
-        "y": 42.5,
+        "y": 43.92,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2300,8 +2300,8 @@ const PRESET_TEMPLATES = [
         "id": "fore10_9",
         "name": "고우림 (금속목걸이)",
         "section": "금속목걸이",
-        "x": 29.8,
-        "y": 42.5,
+        "x": 28.6,
+        "y": 43.92,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2311,7 +2311,7 @@ const PRESET_TEMPLATES = [
         "name": "금속목걸이 단체",
         "section": "금속목걸이",
         "x": 37.8,
-        "y": 45,
+        "y": 48.92,
         "w": 11.5,
         "h": 9.8,
         "radius": 6
@@ -2321,7 +2321,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (스웨트셔츠)",
         "section": "스웨트셔츠",
         "x": 2.8,
-        "y": 61.5,
+        "y": 63.08,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2331,7 +2331,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (스웨트셔츠)",
         "section": "스웨트셔츠",
         "x": 11.8,
-        "y": 61.5,
+        "y": 63.08,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2341,7 +2341,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (스웨트셔츠)",
         "section": "스웨트셔츠",
         "x": 20.8,
-        "y": 61.5,
+        "y": 63.08,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2351,7 +2351,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (스웨트셔츠)",
         "section": "스웨트셔츠",
         "x": 29.8,
-        "y": 61.5,
+        "y": 63.08,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2360,8 +2360,8 @@ const PRESET_TEMPLATES = [
         "id": "fore10_15",
         "name": "스웨트셔츠 단체",
         "section": "스웨트셔츠",
-        "x": 37.8,
-        "y": 64,
+        "x": 37.6,
+        "y": 68.08,
         "w": 11.5,
         "h": 9.8,
         "radius": 6
@@ -2371,7 +2371,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (리유저블컵)",
         "section": "리유저블컵",
         "x": 2.8,
-        "y": 80.5,
+        "y": 82.24,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2381,7 +2381,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (리유저블컵)",
         "section": "리유저블컵",
         "x": 11.8,
-        "y": 80.5,
+        "y": 82.24,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2391,7 +2391,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (리유저블컵)",
         "section": "리유저블컵",
         "x": 20.8,
-        "y": 80.5,
+        "y": 82.24,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2401,7 +2401,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (리유저블컵)",
         "section": "리유저블컵",
         "x": 29.8,
-        "y": 80.5,
+        "y": 82.24,
         "w": 7.8,
         "h": 14.8,
         "radius": 6
@@ -2411,7 +2411,7 @@ const PRESET_TEMPLATES = [
         "name": "리유저블컵 단체",
         "section": "리유저블컵",
         "x": 37.8,
-        "y": 83,
+        "y": 87.24,
         "w": 11.5,
         "h": 9.8,
         "radius": 6
@@ -2461,7 +2461,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (포토카드 세트 1)",
         "section": "포토카드 세트 1",
         "x": 50.8,
-        "y": 32.8,
+        "y": 34.38,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2471,7 +2471,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (포토카드 세트 1)",
         "section": "포토카드 세트 1",
         "x": 59.5,
-        "y": 32.8,
+        "y": 34.38,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2481,7 +2481,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (포토카드 세트 1)",
         "section": "포토카드 세트 1",
         "x": 68.2,
-        "y": 32.8,
+        "y": 34.38,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2491,7 +2491,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (포토카드 세트 1)",
         "section": "포토카드 세트 1",
         "x": 76.9,
-        "y": 32.8,
+        "y": 34.38,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2501,7 +2501,7 @@ const PRESET_TEMPLATES = [
         "name": "포카세트 단체 1",
         "section": "포토카드 세트",
         "x": 85.8,
-        "y": 35.3,
+        "y": 39.38,
         "w": 12,
         "h": 9.8,
         "radius": 6
@@ -2511,7 +2511,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (포토카드 세트 2)",
         "section": "포토카드 세트 2",
         "x": 50.8,
-        "y": 48.8,
+        "y": 50.22,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2521,7 +2521,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (포토카드 세트 2)",
         "section": "포토카드 세트 2",
         "x": 59.5,
-        "y": 48.8,
+        "y": 50.22,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2531,7 +2531,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (포토카드 세트 2)",
         "section": "포토카드 세트 2",
         "x": 68.2,
-        "y": 48.8,
+        "y": 50.22,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2541,7 +2541,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (포토카드 세트 2)",
         "section": "포토카드 세트 2",
         "x": 76.9,
-        "y": 48.8,
+        "y": 50.22,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2551,9 +2551,9 @@ const PRESET_TEMPLATES = [
         "name": "포카세트 단체 2",
         "section": "포토카드 세트",
         "x": 85.8,
-        "y": 51.3,
-        "w": 12,
-        "h": 9.8,
+        "y": 50.22,
+        "w": 7.5,
+        "h": 14.8,
         "radius": 6
       },
       {
@@ -2561,7 +2561,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (포토카드 세트 3)",
         "section": "포토카드 세트 3",
         "x": 50.8,
-        "y": 64.8,
+        "y": 65.91,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2571,7 +2571,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (포토카드 세트 3)",
         "section": "포토카드 세트 3",
         "x": 59.5,
-        "y": 64.8,
+        "y": 65.91,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2581,7 +2581,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (포토카드 세트 3)",
         "section": "포토카드 세트 3",
         "x": 68.2,
-        "y": 64.8,
+        "y": 65.91,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2591,7 +2591,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (포토카드 세트 3)",
         "section": "포토카드 세트 3",
         "x": 76.9,
-        "y": 64.8,
+        "y": 65.91,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2601,9 +2601,9 @@ const PRESET_TEMPLATES = [
         "name": "포카세트 단체 3",
         "section": "포토카드 세트",
         "x": 85.8,
-        "y": 67.3,
-        "w": 12,
-        "h": 9.8,
+        "y": 65.91,
+        "w": 7.5,
+        "h": 14.8,
         "radius": 6
       },
       {
@@ -2611,7 +2611,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (포토카드 세트 4)",
         "section": "포토카드 세트 4",
         "x": 50.8,
-        "y": 80.8,
+        "y": 82.24,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2621,7 +2621,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (포토카드 세트 4)",
         "section": "포토카드 세트 4",
         "x": 59.5,
-        "y": 80.8,
+        "y": 82.24,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2631,7 +2631,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (포토카드 세트 4)",
         "section": "포토카드 세트 4",
         "x": 68.2,
-        "y": 80.8,
+        "y": 82.24,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2641,7 +2641,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (포토카드 세트 4)",
         "section": "포토카드 세트 4",
         "x": 76.9,
-        "y": 80.8,
+        "y": 82.24,
         "w": 7.5,
         "h": 14.8,
         "radius": 6
@@ -2651,7 +2651,7 @@ const PRESET_TEMPLATES = [
         "name": "포카세트 단체 4",
         "section": "포토카드 세트",
         "x": 85.8,
-        "y": 83.3,
+        "y": 87.24,
         "w": 12,
         "h": 9.8,
         "radius": 6
