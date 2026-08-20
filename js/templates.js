@@ -214,7 +214,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 4.21,
-        "y": 35.86,
+        "y": 35.07,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -224,7 +224,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 21.59,
-        "y": 35.86,
+        "y": 35.07,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -234,7 +234,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 38.97,
-        "y": 35.86,
+        "y": 35.07,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -244,7 +244,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 56.35,
-        "y": 35.86,
+        "y": 35.07,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -254,7 +254,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (Moonlight ver. A)",
         "section": "Moonlight ver. A",
         "x": 73.4,
-        "y": 40.85,
+        "y": 40.06,
         "w": 22.53,
         "h": 9.74,
         "radius": 10
@@ -264,7 +264,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 4.21,
-        "y": 51.44,
+        "y": 49.86,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -273,8 +273,8 @@ const PRESET_TEMPLATES = [
         "id": "fore3_7",
         "name": "강형호 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
-        "x": 21.59,
-        "y": 51.44,
+        "x": 20.59,
+        "y": 49.86,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -284,7 +284,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 38.97,
-        "y": 51.44,
+        "y": 49.86,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -294,7 +294,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 56.35,
-        "y": 51.44,
+        "y": 49.86,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -304,7 +304,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (Moonlight ver. B)",
         "section": "Moonlight ver. B",
         "x": 73.4,
-        "y": 56.43,
+        "y": 54.85,
         "w": 22.53,
         "h": 9.74,
         "radius": 10
@@ -364,7 +364,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 4.21,
-        "y": 84.59,
+        "y": 83.8,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -374,7 +374,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 21.59,
-        "y": 84.59,
+        "y": 83.8,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -384,7 +384,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 38.97,
-        "y": 84.59,
+        "y": 83.8,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -394,7 +394,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 56.35,
-        "y": 84.59,
+        "y": 83.8,
         "w": 14.37,
         "h": 14.73,
         "radius": 10
@@ -404,7 +404,7 @@ const PRESET_TEMPLATES = [
         "name": "단체 (Sunlight ver. B)",
         "section": "Sunlight ver. B",
         "x": 73.4,
-        "y": 89.58,
+        "y": 88.79,
         "w": 22.53,
         "h": 9.74,
         "radius": 10
