@@ -112,7 +112,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (키트)",
         "section": "키트",
         "x": 7.8,
-        "y": 75.6,
+        "y": 75.3,
         "w": 18.55,
         "h": 21.6,
         "radius": 10
@@ -122,7 +122,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (키트)",
         "section": "키트",
         "x": 29.7,
-        "y": 75.6,
+        "y": 75.3,
         "w": 18.55,
         "h": 21.6,
         "radius": 10
@@ -132,7 +132,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (키트)",
         "section": "키트",
         "x": 51.6,
-        "y": 75.6,
+        "y": 75.3,
         "w": 18.55,
         "h": 21.6,
         "radius": 10
@@ -142,7 +142,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (키트)",
         "section": "키트",
         "x": 73.5,
-        "y": 75.6,
+        "y": 75.3,
         "w": 18.55,
         "h": 21.6,
         "radius": 10
