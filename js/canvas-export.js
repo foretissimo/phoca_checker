@@ -104,6 +104,41 @@ class CanvasExporter {
       }
     });
 
+    // 2.5 Draw Top-Left Mode Pill Badge ('미보유' or '보유')
+    ctx.save();
+    const modeTagText = displayMode === 'hide-owned' ? '미보유' : '보유';
+    const tagFontSize = Math.max(16, Math.round(naturalWidth * 0.022));
+    ctx.font = `bold ${tagFontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", sans-serif`;
+
+    const tagPaddingX = Math.round(tagFontSize * 0.7);
+    const tagPaddingY = Math.round(tagFontSize * 0.35);
+    const tagTextMetrics = ctx.measureText(modeTagText);
+    const tagWidth = tagTextMetrics.width + tagPaddingX * 2;
+    const tagHeight = tagFontSize + tagPaddingY * 2;
+
+    const tagX = Math.round(naturalWidth * 0.025);
+    const tagY = Math.round(naturalWidth * 0.025);
+    const tagRadius = Math.round(tagHeight / 2);
+
+    ctx.beginPath();
+    if (typeof ctx.roundRect === 'function') {
+      ctx.roundRect(tagX, tagY, tagWidth, tagHeight, tagRadius);
+    } else {
+      CanvasExporter.drawRoundRectPath(ctx, tagX, tagY, tagWidth, tagHeight, tagRadius);
+    }
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.78)';
+    ctx.fill();
+
+    ctx.lineWidth = Math.max(1.5, Math.round(naturalWidth / 800));
+    ctx.strokeStyle = displayMode === 'hide-owned' ? '#38bdf8' : '#34d399';
+    ctx.stroke();
+
+    ctx.fillStyle = displayMode === 'hide-owned' ? '#38bdf8' : '#34d399';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(modeTagText, tagX + tagWidth / 2, tagY + tagHeight / 2 + 1);
+    ctx.restore();
+
     // 3. Draw Bottom Info & Credit Banner
     ctx.save();
     const bannerY = naturalHeight;
