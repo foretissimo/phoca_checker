@@ -441,11 +441,18 @@ class PhocaCheckerApp {
   // --------------------------------------------------------------------------
   getCheckedSetForTemplate(templateId) {
     const set = new Set();
+    const template = this.templates.find(t => t.id === templateId);
+    const validCardIds = template ? new Set((template.cards || []).map(c => c.id)) : null;
+
     try {
       const key = `phoca_checks_${templateId}`;
       const saved = localStorage.getItem(key);
       if (saved) {
-        JSON.parse(saved).forEach(id => set.add(id));
+        JSON.parse(saved).forEach(id => {
+          if (!validCardIds || validCardIds.has(id)) {
+            set.add(id);
+          }
+        });
       }
     } catch (e) {}
     return set;
@@ -453,6 +460,8 @@ class PhocaCheckerApp {
 
   loadCheckedStateForCurrent() {
     this.checkedCards = this.getCheckedSetForTemplate(this.currentTemplateId);
+    // Automatically save cleaned state in case obsolete IDs were pruned
+    this.saveCheckedState();
   }
 
   saveCheckedState() {
@@ -739,6 +748,7 @@ class PhocaCheckerApp {
 
   selectAllCards() {
     if (!this.currentTemplate) return;
+    this.checkedCards.clear();
     this.currentTemplate.cards.forEach(c => this.checkedCards.add(c.id));
     this.saveCheckedState();
     this.renderCards();
@@ -758,10 +768,13 @@ class PhocaCheckerApp {
 
   invertSelection() {
     if (!this.currentTemplate) return;
+    const newChecked = new Set();
     this.currentTemplate.cards.forEach(c => {
-      if (this.checkedCards.has(c.id)) this.checkedCards.delete(c.id);
-      else this.checkedCards.add(c.id);
+      if (!this.checkedCards.has(c.id)) {
+        newChecked.add(c.id);
+      }
     });
+    this.checkedCards = newChecked;
     this.saveCheckedState();
     this.renderCards();
     this.updateStats();
