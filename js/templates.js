@@ -2723,9 +2723,9 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (블랙 수트 ver.)",
         "section": "블랙 수트 ver.",
         "x": 7.8,
-        "y": 41.5,
+        "y": 51.93,
         "w": 18.5,
-        "h": 23,
+        "h": 21.42,
         "radius": 10
       },
       {
@@ -2733,9 +2733,9 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (블랙 수트 ver.)",
         "section": "블랙 수트 ver.",
         "x": 29.8,
-        "y": 41.5,
+        "y": 51.93,
         "w": 18.5,
-        "h": 23,
+        "h": 21.42,
         "radius": 10
       },
       {
@@ -2743,9 +2743,9 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (블랙 수트 ver.)",
         "section": "블랙 수트 ver.",
         "x": 51.8,
-        "y": 41.5,
+        "y": 51.93,
         "w": 18.5,
-        "h": 23,
+        "h": 21.42,
         "radius": 10
       },
       {
@@ -2753,9 +2753,9 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (블랙 수트 ver.)",
         "section": "블랙 수트 ver.",
         "x": 73.8,
-        "y": 41.5,
+        "y": 51.93,
         "w": 18.5,
-        "h": 23,
+        "h": 21.42,
         "radius": 10
       },
       {
@@ -2763,9 +2763,9 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (화이트 트위드 ver.)",
         "section": "화이트 트위드 ver.",
         "x": 7.8,
-        "y": 70.8,
+        "y": 74.28,
         "w": 18.5,
-        "h": 23,
+        "h": 21.42,
         "radius": 10
       },
       {
@@ -2773,9 +2773,9 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (화이트 트위드 ver.)",
         "section": "화이트 트위드 ver.",
         "x": 29.8,
-        "y": 70.8,
+        "y": 74.28,
         "w": 18.5,
-        "h": 23,
+        "h": 21.42,
         "radius": 10
       },
       {
@@ -2783,9 +2783,9 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (화이트 트위드 ver.)",
         "section": "화이트 트위드 ver.",
         "x": 51.8,
-        "y": 70.8,
+        "y": 74.28,
         "w": 18.5,
-        "h": 23,
+        "h": 21.42,
         "radius": 10
       },
       {
@@ -2793,9 +2793,9 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (화이트 트위드 ver.)",
         "section": "화이트 트위드 ver.",
         "x": 73.8,
-        "y": 70.8,
+        "y": 74.28,
         "w": 18.5,
-        "h": 23,
+        "h": 21.42,
         "radius": 10
       }
     ]
