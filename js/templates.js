@@ -4662,7 +4662,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Docent Book ver.)",
         "section": "Docent Book ver.",
         "x": 7.8,
-        "y": 23.5,
+        "y": 13.39,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4672,7 +4672,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (Docent Book ver.)",
         "section": "Docent Book ver.",
         "x": 29.7,
-        "y": 23.5,
+        "y": 13.39,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4682,7 +4682,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Docent Book ver.)",
         "section": "Docent Book ver.",
         "x": 51.6,
-        "y": 23.5,
+        "y": 13.39,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4692,7 +4692,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (Docent Book ver.)",
         "section": "Docent Book ver.",
         "x": 73.5,
-        "y": 23.5,
+        "y": 13.39,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4702,7 +4702,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (Jewel ver.)",
         "section": "Jewel ver.",
         "x": 7.8,
-        "y": 39,
+        "y": 30.79,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4712,7 +4712,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (Jewel ver.)",
         "section": "Jewel ver.",
         "x": 29.7,
-        "y": 39,
+        "y": 30.79,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4722,7 +4722,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (Jewel ver.)",
         "section": "Jewel ver.",
         "x": 51.6,
-        "y": 39,
+        "y": 30.79,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4732,7 +4732,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (Jewel ver.)",
         "section": "Jewel ver.",
         "x": 73.5,
-        "y": 39,
+        "y": 30.79,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4742,7 +4742,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (PhotoCard A ver.)",
         "section": "PhotoCard A ver.",
         "x": 7.8,
-        "y": 54.5,
+        "y": 48.65,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4752,7 +4752,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (PhotoCard A ver.)",
         "section": "PhotoCard A ver.",
         "x": 29.7,
-        "y": 54.5,
+        "y": 48.65,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4762,7 +4762,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (PhotoCard A ver.)",
         "section": "PhotoCard A ver.",
         "x": 51.6,
-        "y": 54.5,
+        "y": 48.65,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4772,7 +4772,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (PhotoCard A ver.)",
         "section": "PhotoCard A ver.",
         "x": 73.5,
-        "y": 54.5,
+        "y": 48.65,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4782,7 +4782,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (PhotoCard B ver.)",
         "section": "PhotoCard B ver.",
         "x": 7.8,
-        "y": 70,
+        "y": 65.89,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4792,7 +4792,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (PhotoCard B ver.)",
         "section": "PhotoCard B ver.",
         "x": 29.7,
-        "y": 70,
+        "y": 65.89,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4801,8 +4801,8 @@ const PRESET_TEMPLATES = [
         "id": "fore21_pcb_15",
         "name": "조민규 (PhotoCard B ver.)",
         "section": "PhotoCard B ver.",
-        "x": 51.6,
-        "y": 70,
+        "x": 50.65,
+        "y": 65.89,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4812,7 +4812,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (PhotoCard B ver.)",
         "section": "PhotoCard B ver.",
         "x": 73.5,
-        "y": 70,
+        "y": 65.89,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4822,7 +4822,7 @@ const PRESET_TEMPLATES = [
         "name": "배두훈 (PhotoCard C ver.)",
         "section": "PhotoCard C ver.",
         "x": 7.8,
-        "y": 85.5,
+        "y": 84.39,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4832,7 +4832,7 @@ const PRESET_TEMPLATES = [
         "name": "강형호 (PhotoCard C ver.)",
         "section": "PhotoCard C ver.",
         "x": 29.7,
-        "y": 85.5,
+        "y": 84.39,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4842,7 +4842,7 @@ const PRESET_TEMPLATES = [
         "name": "조민규 (PhotoCard C ver.)",
         "section": "PhotoCard C ver.",
         "x": 51.6,
-        "y": 85.5,
+        "y": 84.39,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
@@ -4852,7 +4852,7 @@ const PRESET_TEMPLATES = [
         "name": "고우림 (PhotoCard C ver.)",
         "section": "PhotoCard C ver.",
         "x": 73.5,
-        "y": 85.5,
+        "y": 84.39,
         "w": 18.5,
         "h": 13.5,
         "radius": 6
