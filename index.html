@@ -585,12 +585,33 @@ body {
   transform: scale(1);
 }
 
-.floating-download-btn {
+.image-mode-badge {
   position: absolute;
-  bottom: 1.25rem;
-  right: 1.25rem;
-  z-index: 50;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  top: 14px;
+  left: 14px;
+  z-index: 25;
+  padding: 3px 11px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.image-mode-badge.unowned {
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+}
+
+.image-mode-badge.owned {
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.5);
 }
 
 .image-credit-banner {
@@ -598,6 +619,70 @@ body {
   font-size: 0.82rem;
   color: var(--text-muted);
   text-align: center;
+}
+
+/* Modal Dialog */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.22s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  width: 440px;
+  max-width: 90vw;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.95);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-backdrop.open .modal-box {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.backup-option-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -1133,19 +1218,14 @@ body {
         전체 합본 다운로드
       </button>
 
-      <label for="custom-image-upload" class="btn btn-sm" title="내 포토카드 판 이미지 불러오기">
+      <button id="btn-open-backup" class="btn btn-sm" title="내 체크리스트 데이터 백업 및 복원 (기기 이동/공유)">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="17 8 12 3 7 8"></polyline>
+          <polyline points="7 10 12 15 17 10"></polyline>
           <line x1="12" y1="15" x2="12" y2="3"></line>
         </svg>
-        이미지 열기
-      </label>
-          <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: #cbd5e1; cursor: pointer;">
-            <input type="checkbox" id="compact-label-toggle">
-            번호만 표시
-          </label>
-      <input type="file" id="custom-image-upload" accept="image/*" style="display: none;">
+        백업 / 복원
+      </button>
 
       <button id="toggle-editor-btn" class="btn btn-sm" title="영역 편집 / 자석 스냅 / 깃헙 직접 저장">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1167,6 +1247,12 @@ body {
       </div>
       <h2 class="hero-title">카테고리를 선택하세요</h2>
       <p class="hero-desc">보유한 포토카드를 클릭하여 체크하고, 1장 개별 다운로드 또는 전체 39종 합본 포스터로 다운로드하세요.</p>
+      
+      <div style="margin-top: 1rem;">
+        <button id="btn-home-open-backup" class="btn btn-sm" style="background: var(--bg-card);">
+          📁 내 체크리스트 백업 / 복원하기
+        </button>
+      </div>
     </div>
 
     <div class="categories-grid" id="categories-grid">
@@ -1258,12 +1344,16 @@ body {
 
     <!-- Visual Editor Drawer (Smart Magnet & Direct GitHub Save) -->
     <section id="editor-drawer" class="editor-drawer">
-      <div class="editor-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
-        <div style="display: flex; align-items: center; gap: 0.65rem;">
+      <div class="editor-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
           <h3 style="font-size: 1.05rem; font-weight: 700;">🛠️ 포토카드 영역 편집기</h3>
           <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: #38bdf8; cursor: pointer;">
             <input type="checkbox" id="snap-magnet-toggle" checked>
             🧲 마그넷 자석 스냅 켜짐
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: #cbd5e1; cursor: pointer;">
+            <input type="checkbox" id="compact-label-toggle">
+            번호만 표시
           </label>
         </div>
         <button id="close-editor-btn" class="btn btn-sm">닫기</button>
@@ -1338,15 +1428,8 @@ body {
         <img id="main-sheet-image" class="main-image" src="" alt="포토카드 리스트 이미지">
         <div id="card-overlay-container" class="card-overlay-container"></div>
         
-        <!-- In-Image Quick Download Action -->
-        <button id="btn-floating-export" class="btn btn-success btn-sm floating-download-btn" title="이 포카판 고화질 이미지 다운로드">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          이미지 다운로드
-        </button>
+        <!-- Top-Left Mode Tag Badge -->
+        <div id="image-mode-tag" class="image-mode-badge unowned">미보유</div>
       </div>
 
       <div class="image-credit-banner">
@@ -1393,6 +1476,47 @@ body {
     </div>
   </div>
 
+  <!-- ========================================================================
+       Backup / Restore Modal Dialog
+       ======================================================================== -->
+  <div id="backup-modal-backdrop" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">📁 체크리스트 백업 및 복원</h3>
+        <button id="close-backup-modal-btn" class="btn btn-sm btn-icon-only">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <p style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.4;">
+        체크리스트는 방문자별 브라우저(localStorage)에 안전하게 저장됩니다.<br>
+        다른 기기(모바일/PC)로 이동하거나 보관할 때 파일로 내보내고 불러오세요.
+      </p>
+
+      <div class="backup-option-card">
+        <div>
+          <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 2px;">📤 데이터 백업 내보내기</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">현재 체크 상태를 JSON 파일로 저장</div>
+        </div>
+        <button id="btn-export-backup" class="btn btn-primary btn-sm">다운로드</button>
+      </div>
+
+      <div class="backup-option-card">
+        <div>
+          <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 2px;">📥 백업 파일 불러오기</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">기존 저장된 JSON 파일 복원</div>
+        </div>
+        <label for="backup-file-input" class="btn btn-success btn-sm" style="cursor: pointer;">
+          파일 선택
+        </label>
+        <input type="file" id="backup-file-input" accept=".json" style="display: none;">
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="app-footer">
     <p>포카 체커 (Phoca Checker) • 포토카드 도안 출처: <a href="http://x.com/sy_fore" target="_blank" rel="noopener" class="credit-link">@sy_fore</a> | <a href="https://t.co/fEts76yenI" target="_blank" rel="noopener" class="credit-link">Notion</a></p>
@@ -1402,9 +1526,9 @@ body {
   <div id="toast-container" class="toast-container"></div>
 
   <!-- Scripts -->
-  <script src="js/templates.js?v=5.1.0"></script>
-  <script src="js/canvas-export.js?v=5.1.0"></script>
-  <script src="js/editor.js?v=5.1.0"></script>
-  <script src="js/app.js?v=5.1.0"></script>
+  <script src="js/templates.js?v=6.0.0"></script>
+  <script src="js/canvas-export.js?v=6.0.0"></script>
+  <script src="js/editor.js?v=6.0.0"></script>
+  <script src="js/app.js?v=6.0.0"></script>
 </body>
 </html>
