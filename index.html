@@ -685,6 +685,124 @@ body {
   gap: 0.75rem;
 }
 
+/* Info & Notice Bar */
+.notice-ticker-bar {
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 0.84rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  max-width: 680px;
+  margin: 1.25rem auto 0;
+  user-select: none;
+}
+
+.notice-ticker-bar:hover {
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(99, 102, 241, 0.45);
+  transform: translateY(-1px);
+}
+
+.notice-ticker-badge {
+  font-weight: 700;
+  color: #a5b4fc;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.notice-ticker-link {
+  color: #38bdf8;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.info-modal-box {
+  width: 580px;
+  max-width: 92vw;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.info-section {
+  margin-bottom: 1.25rem;
+}
+
+.info-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #a5b4fc;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.guide-step {
+  display: flex;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.guide-step:last-child {
+  margin-bottom: 0;
+}
+
+.guide-step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  font-weight: 700;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.credit-person-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+}
+
+.credit-person-card:last-child {
+  margin-bottom: 0;
+}
+
+.credit-role {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.86rem;
+}
+
 /* --------------------------------------------------------------------------
    3. Template Drawer
    -------------------------------------------------------------------------- */
@@ -1199,16 +1317,18 @@ body {
       <span id="nav-template-name" style="display: none;"></span>
     </div>
 
-    <!-- Header Attribution Credits -->
-    <div class="header-credits">
-      <span>도안 출처:</span>
-      <a href="http://x.com/sy_fore" target="_blank" rel="noopener" class="credit-link">@sy_fore</a>
-      <span>|</span>
-      <a href="https://t.co/fEts76yenI" target="_blank" rel="noopener" class="credit-link">Notion</a>
-    </div>
-
     <!-- Header Action Buttons -->
     <div class="header-actions">
+      <button id="btn-open-info" class="btn btn-sm" title="공지사항, 사용 도움말, 만드는 사람들 안내">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        만드는 사람들
+      </button>
+
       <button id="btn-export-all-merged" class="btn btn-purple btn-sm" title="현재 카테고리 전체 39종을 1장의 고화질 포스터 이미지로 일괄 다운로드">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -1248,10 +1368,11 @@ body {
       <h2 class="hero-title">카테고리를 선택하세요</h2>
       <p class="hero-desc">보유한 포토카드를 클릭하여 체크하고, 1장 개별 다운로드 또는 전체 39종 합본 포스터로 다운로드하세요.</p>
       
-      <div style="margin-top: 1rem;">
-        <button id="btn-home-open-backup" class="btn btn-sm" style="background: var(--bg-card);">
-          📁 내 체크리스트 백업 / 복원하기
-        </button>
+      <!-- Single-line Interactive Notice Bar -->
+      <div id="btn-notice-ticker" class="notice-ticker-bar" title="공지사항 및 사용 도움말 열기">
+        <span class="notice-ticker-badge">📢 [공지]</span>
+        <span>포카 체커가 오픈하였습니다!</span>
+        <span class="notice-ticker-link">안내 & 만든이 보기 ></span>
       </div>
     </div>
 
@@ -1431,10 +1552,6 @@ body {
         <!-- Top-Left Mode Tag Badge -->
         <div id="image-mode-tag" class="image-mode-badge unowned">미보유</div>
       </div>
-
-      <div class="image-credit-banner">
-        포토카드 도안 출처: <a href="http://x.com/sy_fore" target="_blank" rel="noopener" class="credit-link">@sy_fore</a> | <a href="https://t.co/fEts76yenI" target="_blank" rel="noopener" class="credit-link">Notion 정리본</a>
-      </div>
     </section>
   </main>
 
@@ -1473,6 +1590,114 @@ body {
       </div>
 
       <div class="drawer-list-container" id="drawer-list-container"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Information, Notice & Credits Modal Dialog
+       ======================================================================== -->
+  <div id="info-modal-backdrop" class="modal-backdrop">
+    <div class="modal-box info-modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">✨ 포카 체커 안내 & 만든 사람들</h3>
+        <button id="close-info-modal-btn" class="btn btn-sm btn-icon-only">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Section 1: 공지사항 -->
+      <div class="info-section">
+        <div class="info-section-title">
+          <span>📢</span> 공지사항
+        </div>
+        <div class="info-card">
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.35rem;">
+            🎉 포카 체커(Phoca Checker)가 정식 오픈하였습니다!
+          </div>
+          <p style="margin-bottom: 0.4rem;">
+            포레스텔라(Forestella) 공식 앨범, 시즌그리팅, 팬클럽 키트, 콘서트/MD, 특전 등 <strong>총 39종(774장)의 도안</strong>이 등록되었습니다.
+          </p>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">
+            * 신규 포토카드 발매 시 지속적으로 업데이트될 예정입니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 2: 간단 사용법 (도움말) -->
+      <div class="info-section">
+        <div class="info-section-title">
+          <span>💡</span> 초간단 사용 도움말
+        </div>
+        <div class="info-card">
+          <div class="guide-step">
+            <div class="guide-step-num">1</div>
+            <div><strong>포토카드 체크</strong>: 내가 보유한 포토카드를 클릭하면 체크(가림)됩니다.</div>
+          </div>
+          <div class="guide-step">
+            <div class="guide-step-num">2</div>
+            <div>
+              <strong>모드 전환</strong>:
+              <ul style="padding-left: 1.1rem; margin-top: 0.2rem;">
+                <li><code>보유 포카 가리기</code>: 가진 포카를 가려 아직 못 구한 <strong>'미보유 위시리스트'</strong> 강조</li>
+                <li><code>미보유 포카 가리기</code>: 없는 포카를 가려 모아온 <strong>'내 보유 컬렉션'</strong> 확인</li>
+              </ul>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="guide-step-num">3</div>
+            <div>
+              <strong>고화질 이미지 다운로드</strong>:
+              <ul style="padding-left: 1.1rem; margin-top: 0.2rem;">
+                <li><code>다운로드 (1장)</code>: 현재 포카판을 좌측 상단 '미보유/보유' 표시와 함께 고화질 PNG로 저장</li>
+                <li><code>전체 합본 다운로드</code>: 39종 전체 리스트를 4열 대형 포스터 1장으로 모아서 저장</li>
+              </ul>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="guide-step-num">4</div>
+            <div>
+              <strong>데이터 백업 & 기기 이동</strong>:
+              체크 내역은 브라우저에 자동 보관되며, <code>[백업 / 복원]</code> 메뉴에서 언제든 파일로 내보내 스마트폰 ↔ PC 간 이동할 수 있습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: 만든 사람들 -->
+      <div class="info-section" style="margin-bottom: 0;">
+        <div class="info-section-title">
+          <span>👥</span> 만든 사람들 (Credits)
+        </div>
+        <div class="info-card" style="padding: 0.65rem;">
+          <div class="credit-person-card">
+            <div>
+              <div class="credit-role">기획 및 제작</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Phoca Checker Developer</div>
+            </div>
+            <a href="https://x.com/live_in_fore" target="_blank" rel="noopener" class="credit-link" style="font-size: 0.86rem; padding: 4px 10px;">
+              @live_in_fore ↗
+            </a>
+          </div>
+
+          <div class="credit-person-card">
+            <div>
+              <div class="credit-role">포토카드 도안 제공</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Photocard Template Provider</div>
+            </div>
+            <div style="display: flex; gap: 0.4rem;">
+              <a href="https://x.com/sy_fore" target="_blank" rel="noopener" class="credit-link" style="font-size: 0.86rem; padding: 4px 10px;">
+                @sy_fore ↗
+              </a>
+              <a href="https://t.co/fEts76yenI" target="_blank" rel="noopener" class="credit-link" style="font-size: 0.86rem; padding: 4px 10px;">
+                Notion ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1519,16 +1744,16 @@ body {
 
   <!-- Footer -->
   <footer class="app-footer">
-    <p>포카 체커 (Phoca Checker) • 포토카드 도안 출처: <a href="http://x.com/sy_fore" target="_blank" rel="noopener" class="credit-link">@sy_fore</a> | <a href="https://t.co/fEts76yenI" target="_blank" rel="noopener" class="credit-link">Notion</a></p>
+    <p>포카 체커 (Phoca Checker) • <a href="#/info" style="color: #a5b4fc; text-decoration: underline; font-weight: 600;">만드는 사람들 & 공지/도움말</a></p>
   </footer>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>
 
   <!-- Scripts -->
-  <script src="js/templates.js?v=6.0.0"></script>
-  <script src="js/canvas-export.js?v=6.0.0"></script>
-  <script src="js/editor.js?v=6.0.0"></script>
-  <script src="js/app.js?v=6.0.0"></script>
+  <script src="js/templates.js?v=7.0.0"></script>
+  <script src="js/canvas-export.js?v=7.0.0"></script>
+  <script src="js/editor.js?v=7.0.0"></script>
+  <script src="js/app.js?v=7.0.0"></script>
 </body>
 </html>
