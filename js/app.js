@@ -904,6 +904,16 @@ class PhocaCheckerApp {
       });
 
       this.showToast('고해상도 체크리스트 이미지가 다운로드되었습니다! 🎉');
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'export_single_template', {
+          template_id: this.currentTemplate.id,
+          template_title: this.currentTemplate.title,
+          checked_count: this.checkedCards.size,
+          total_count: this.currentTemplate.cards?.length || 0,
+          display_mode: this.displayMode
+        });
+      }
     } catch (err) {
       console.error('Export error:', err);
       this.showToast('이미지 내보내기 중 오류가 발생했습니다.');
@@ -939,9 +949,67 @@ class PhocaCheckerApp {
       });
 
       this.showToast('🎉 전체 39종 합본 포스터 이미지가 다운로드되었습니다!');
+
+      // Send stats to Google Sheets Webhook and GA4 in background
+      this.sendMasterExportStats(catTemplates);
     } catch (err) {
       console.error('Merged export error:', err);
       this.showToast('전체 이미지 생성 중 오류가 발생했습니다.');
+    }
+  }
+
+  sendMasterExportStats(catTemplates) {
+    try {
+      let totalCards = 0;
+      let totalChecked = 0;
+      const checkedCardIds = [];
+
+      catTemplates.forEach(t => {
+        totalCards += (t.cards?.length || 0);
+        const checkedSet = this.getCheckedSetForTemplate(t.id);
+        totalChecked += checkedSet.size;
+        t.cards?.forEach(c => {
+          if (checkedSet.has(c.id)) {
+            checkedCardIds.push(c.id);
+          }
+        });
+      });
+
+      const overallPercent = totalCards > 0 ? Math.round((totalChecked / totalCards) * 100) : 0;
+
+      // 1. GA4 Event Tracking
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'export_master_poster', {
+          total_cards: totalCards,
+          total_checked: totalChecked,
+          percent: overallPercent,
+          display_mode: this.displayMode
+        });
+      }
+
+      // 2. Google Sheets Webhook Sync (if URL configured)
+      const statsUrl = window.GOOGLE_SHEETS_STATS_URL || 'https://script.google.com/macros/s/AKfycby4j6_Sxyp6xpJjFRotN2xGXskf5Z7VOPQxdsQFERCVDNExMderOAUvhRmNbVxc2E__/exec';
+      if (statsUrl) {
+        const payload = {
+          action: 'submit_stats',
+          timestamp: new Date().toISOString(),
+          category: this.currentCategory?.id || 'fore',
+          totalCards: totalCards,
+          totalChecked: totalChecked,
+          percent: overallPercent,
+          displayMode: this.displayMode,
+          checkedCardIds: checkedCardIds
+        };
+
+        fetch(statsUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      }
+    } catch (e) {
+      console.warn('Stats sync notice:', e);
     }
   }
 
@@ -972,7 +1040,7 @@ class PhocaCheckerApp {
     reader.readAsDataURL(file);
   }
 
-  shareToX() {
+  async shareToX() {
     let totalCards = 0;
     let totalChecked = 0;
     this.templates.forEach(t => {
@@ -983,15 +1051,14 @@ class PhocaCheckerApp {
 
     const overallPercent = totalCards > 0 ? Math.round((totalChecked / totalCards) * 100) : 0;
 
-    const tweetText = `🌲 포레스텔라 포토카드를 ${overallPercent}% (${totalChecked}/${totalCards}장) 수집했어요! ✨\n\n나만의 포카 체크리스트 & 위시리스트 만들기 👇`;
-
+    // 1. Tweet text with explicit newline before hashtag
+    const tweetText = `🌲 포레스텔라 포토카드를 ${overallPercent}% (${totalChecked}/${totalCards}장) 수집했어요! ✨\n\n나만의 포카 체크리스트 & 위시리스트 만들기 👇\n\n#포레포카체커`;
     const shareUrl = 'https://foretissimo.github.io/phoca_checker/';
-    const hashtags = '포레포카체커';
-    const twitterIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}&hashtags=${encodeURIComponent(hashtags)}`;
+    const twitterIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
 
-    // Open Twitter intent in popup window
+    // 2. Open Twitter composer immediately (preserves user gesture)
     const width = 580;
-    const height = 500;
+    const height = 520;
     const left = Math.max(0, (window.innerWidth - width) / 2 + window.screenX);
     const top = Math.max(0, (window.innerHeight - height) / 2 + window.screenY);
     window.open(
@@ -999,6 +1066,38 @@ class PhocaCheckerApp {
       '_blank',
       `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
     );
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'share_to_x', {
+        total_checked: totalChecked,
+        total_cards: totalCards,
+        percent: overallPercent
+      });
+    }
+
+    // 3. Render card & copy image to clipboard
+    try {
+      if (typeof CanvasExporter !== 'undefined' && typeof CanvasExporter.renderSummaryCardCanvas === 'function') {
+        const cat = this.categories.find(c => c.id === 'fore') || this.categories[0] || {};
+        const canvas = await CanvasExporter.renderSummaryCardCanvas({
+          categoryName: cat.name || '포레스텔라',
+          subtitle: cat.subtitle || 'Forestella Photocard Collection',
+          badge: cat.badge || (cat.itemCount + '종'),
+          totalCards: totalCards,
+          totalChecked: totalChecked,
+          percent: overallPercent,
+          logoSrc: cat.logoImage || 'images/fore/forestella_logo.jpg'
+        });
+
+        const copied = await CanvasExporter.copyCanvasToClipboard(canvas);
+        if (copied) {
+          this.showToast('📋 수집 카드 이미지가 복사되었습니다! 트위터 창에 붙여넣기(Cmd+V / Ctrl+V)하세요 ✨', 5000);
+          return;
+        }
+      }
+    } catch (err) {
+      console.warn('Image clipboard copy notice:', err);
+    }
 
     this.showToast(`✨ 𝕏(트위터) 자랑하기 창이 열렸습니다!`, 2500);
   }
