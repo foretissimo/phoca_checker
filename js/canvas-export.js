@@ -528,6 +528,305 @@ class CanvasExporter {
   }
 
   /**
+   * Export Merged Poster composed of ONLY favorite photocards (up to 10 cards)
+   */
+  static async exportFavoriteMergedPoster({
+    favoriteCards = [],
+    nickname = '',
+    categoryName = '포레스텔라',
+    onProgress = () => {}
+  }) {
+    if (!favoriteCards || favoriteCards.length === 0) return false;
+
+    // Limit to max 10 cards
+    const cardsToExport = favoriteCards.slice(0, 10);
+    const count = cardsToExport.length;
+
+    // Preload all template images
+    const imgCache = new Map();
+    for (let i = 0; i < cardsToExport.length; i++) {
+      const fav = cardsToExport[i];
+      if (onProgress) {
+        onProgress(i + 1, cardsToExport.length, `최애 포카 이미지 불러오는 중 (${i + 1}/${cardsToExport.length})...`);
+      }
+      if (!imgCache.has(fav.imageSrc)) {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        await new Promise((resolve) => {
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = fav.imageSrc;
+        });
+        imgCache.set(fav.imageSrc, img);
+      }
+    }
+
+    if (onProgress) {
+      onProgress(count, count, '고화질 최애포카 합본 포스터 합성 중...');
+    }
+
+    // Grid configuration:
+    // 1~5 cards: 1 row with 'count' columns
+    // 6 cards: 3 columns x 2 rows
+    // 7~8 cards: 4 columns x 2 rows
+    // 9~10 cards: 5 columns x 2 rows
+    let cols = 5;
+    let rows = 1;
+    if (count <= 5) {
+      cols = count;
+      rows = 1;
+    } else if (count === 6) {
+      cols = 3;
+      rows = 2;
+    } else if (count <= 8) {
+      cols = 4;
+      rows = 2;
+    } else {
+      cols = 5;
+      rows = 2;
+    }
+
+    const cardW = 240;
+    const cardH = 356;
+    const cardRadius = 14;
+    const labelH = 54;
+    const cellW = cardW;
+    const cellH = cardH + labelH;
+
+    const gapX = 30;
+    const gapY = 36;
+    const padX = 54;
+    const headerH = 170;
+    const footerH = 80;
+
+    const posterWidth = Math.max(900, padX * 2 + cols * cellW + (cols - 1) * gapX);
+    const contentH = rows * cellH + (rows - 1) * gapY;
+    const posterHeight = headerH + contentH + footerH;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = posterWidth;
+    canvas.height = posterHeight;
+    const ctx = canvas.getContext('2d');
+
+    // 1. Background (Dark elegant gradient)
+    const bgGrad = ctx.createLinearGradient(0, 0, 0, posterHeight);
+    bgGrad.addColorStop(0, '#090b14');
+    bgGrad.addColorStop(0.5, '#101424');
+    bgGrad.addColorStop(1, '#090a12');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, posterWidth, posterHeight);
+
+    // Ambient radial glow from top-center
+    const radialGlow = ctx.createRadialGradient(posterWidth / 2, headerH / 2, 10, posterWidth / 2, headerH / 2, posterWidth * 0.6);
+    radialGlow.addColorStop(0, 'rgba(239, 68, 68, 0.16)');
+    radialGlow.addColorStop(0.4, 'rgba(99, 102, 241, 0.12)');
+    radialGlow.addColorStop(1, 'rgba(9, 11, 20, 0)');
+    ctx.fillStyle = radialGlow;
+    ctx.fillRect(0, 0, posterWidth, posterHeight);
+
+    // Decorative outer card border
+    ctx.save();
+    ctx.beginPath();
+    const outerMargin = 16;
+    if (typeof ctx.roundRect === 'function') {
+      ctx.roundRect(outerMargin, outerMargin, posterWidth - outerMargin * 2, posterHeight - outerMargin * 2, 20);
+    } else {
+      CanvasExporter.drawRoundRectPath(ctx, outerMargin, outerMargin, posterWidth - outerMargin * 2, posterHeight - outerMargin * 2, 20);
+    }
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.restore();
+
+    // 2. Header
+    ctx.save();
+    ctx.textAlign = 'center';
+
+    // Pill Badge
+    const badgeW = 240;
+    const badgeH = 26;
+    const badgeX = (posterWidth - badgeW) / 2;
+    const badgeY = 38;
+    ctx.beginPath();
+    if (typeof ctx.roundRect === 'function') {
+      ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 13);
+    } else {
+      CanvasExporter.drawRoundRectPath(ctx, badgeX, badgeY, badgeW, badgeH, 13);
+    }
+    ctx.fillStyle = 'rgba(239, 68, 68, 0.16)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(248, 113, 113, 0.4)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.font = '700 11px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#fda4af';
+    ctx.fillText(`💖 MY FAVORITE PHOTOCARDS • TOP ${count}`, posterWidth / 2, badgeY + 17);
+
+    // Title
+    ctx.font = '800 28px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#ffffff';
+    const titleText = nickname && nickname.trim()
+      ? `${nickname.trim()}님의 ${categoryName} 최애 포토카드`
+      : `${categoryName} 최애 포토카드 컬렉션`;
+    ctx.fillText(titleText, posterWidth / 2, 102);
+
+    // Subtitle
+    ctx.font = '500 13px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText(`Phoca Checker • 총 ${count}장 수록 (최대 10선) • ${categoryName}`, posterWidth / 2, 130);
+    ctx.restore();
+
+    // 3. Grid of Favorite Photocards (Centered per row)
+    const rowCards = [];
+    if (rows === 1) {
+      rowCards.push(cardsToExport);
+    } else {
+      const topCount = Math.ceil(count / 2);
+      rowCards.push(cardsToExport.slice(0, topCount));
+      rowCards.push(cardsToExport.slice(topCount));
+    }
+
+    let globalCardIndex = 0;
+    for (let r = 0; r < rowCards.length; r++) {
+      const cardsInThisRow = rowCards[r];
+      const rowWidth = cardsInThisRow.length * cellW + (cardsInThisRow.length - 1) * gapX;
+      const startX = (posterWidth - rowWidth) / 2;
+      const startY = headerH + r * (cellH + gapY);
+
+      for (let c = 0; c < cardsInThisRow.length; c++) {
+        const fav = cardsInThisRow[c];
+        const cardX = startX + c * (cellW + gapX);
+        const cardY = startY;
+
+        const img = imgCache.get(fav.imageSrc);
+        if (img) {
+          const imgW = img.naturalWidth || img.width;
+          const imgH = img.naturalHeight || img.height;
+          const sx = (fav.x / 100) * imgW;
+          const sy = (fav.y / 100) * imgH;
+          const sw = Math.max(1, (fav.w / 100) * imgW);
+          const sh = Math.max(1, (fav.h / 100) * imgH);
+          const cardRatio = sw / sh;
+          const cellRatio = cellW / cellH;
+
+          // Adaptively fit photocard without stretching (horizontal or vertical)
+          let drawW, drawH;
+          if (cardRatio > cellRatio) {
+            // Horizontal (wider than cell)
+            drawW = cellW;
+            drawH = Math.round(cellW / cardRatio);
+          } else {
+            // Vertical (taller than cell)
+            drawH = cellH;
+            drawW = Math.round(cellH * cardRatio);
+          }
+
+          const drawX = Math.round(cardX + (cellW - drawW) / 2);
+          const drawY = Math.round(cardY + (cellH - drawH) / 2);
+          const dynamicRadius = Math.min(14, Math.round(drawH * 0.08));
+
+          // Shadow under card
+          ctx.save();
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.65)';
+          ctx.shadowBlur = 18;
+          ctx.shadowOffsetY = 8;
+          ctx.fillStyle = '#171926';
+          ctx.beginPath();
+          if (typeof ctx.roundRect === 'function') {
+            ctx.roundRect(drawX, drawY, drawW, drawH, dynamicRadius);
+          } else {
+            CanvasExporter.drawRoundRectPath(ctx, drawX, drawY, drawW, drawH, dynamicRadius);
+          }
+          ctx.fill();
+          ctx.restore();
+
+          // Card image
+          ctx.save();
+          ctx.beginPath();
+          if (typeof ctx.roundRect === 'function') {
+            ctx.roundRect(drawX, drawY, drawW, drawH, dynamicRadius);
+          } else {
+            CanvasExporter.drawRoundRectPath(ctx, drawX, drawY, drawW, drawH, dynamicRadius);
+          }
+          ctx.clip();
+          ctx.drawImage(img, sx, sy, sw, sh, drawX, drawY, drawW, drawH);
+          ctx.restore();
+
+          // Card border
+          ctx.save();
+          ctx.beginPath();
+          if (typeof ctx.roundRect === 'function') {
+            ctx.roundRect(drawX, drawY, drawW, drawH, dynamicRadius);
+          } else {
+            CanvasExporter.drawRoundRectPath(ctx, drawX, drawY, drawW, drawH, dynamicRadius);
+          }
+          ctx.lineWidth = 2.5;
+          ctx.strokeStyle = '#ef4444';
+          ctx.stroke();
+
+          // Red Heart Badge (Top-Right)
+          const heartBadgeR = 12;
+          const bX = drawX + drawW - 14;
+          const bY = drawY + 14;
+          ctx.beginPath();
+          ctx.arc(bX, bY, heartBadgeR, 0, Math.PI * 2);
+          ctx.fillStyle = '#ef4444';
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '700 11px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(`♥${globalCardIndex + 1}`, bX, bY + 1);
+          ctx.restore();
+
+          // Card Labels
+          ctx.save();
+          ctx.textAlign = 'center';
+          ctx.font = '700 13px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+          ctx.fillStyle = '#f1f5f9';
+          let nameTxt = fav.name || '최애 포카';
+          if (nameTxt.length > 15) nameTxt = nameTxt.substring(0, 14) + '…';
+          ctx.fillText(nameTxt, cardX + cardW / 2, cardY + cardH + 18);
+
+          ctx.font = '500 11px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+          ctx.fillStyle = '#64748b';
+          let sheetTxt = (fav.templateTitle || '').replace(/^fore\d+\.\s*/, '');
+          if (sheetTxt.length > 16) sheetTxt = sheetTxt.substring(0, 15) + '…';
+          ctx.fillText(sheetTxt, cardX + cardW / 2, cardY + cardH + 34);
+          ctx.restore();
+        }
+
+        globalCardIndex++;
+      }
+    }
+
+    // 4. Poster Footer
+    const footY = posterHeight - footerH / 2;
+    ctx.save();
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+    ctx.fillRect(outerMargin, posterHeight - footerH, posterWidth - outerMargin * 2, footerH - outerMargin);
+
+    ctx.font = '500 12px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#64748b';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('✨ 포카 체커 • 도안: @sy_fore • 제작: @live_in_fore • foretissimo.github.io', padX, footY);
+
+    ctx.textAlign = 'right';
+    ctx.font = '700 12px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#818cf8';
+    ctx.fillText('#포레스텔라 #포레포카체커 #최애포카', posterWidth - padX, footY);
+    ctx.restore();
+
+    // 5. Download Master Poster
+    const nickPart = nickname && nickname.trim() ? `_${nickname.trim()}` : '';
+    const dateStr = new Date().toISOString().split('T')[0];
+    const filename = `포카체커_최애포카_합본포스터${nickPart}_${dateStr}.png`;
+    return CanvasExporter.downloadCanvas(canvas, filename);
+  }
+
+  /**
    * Return high-resolution single template canvas object (without automatic download)
    */
   static getSingleTemplateCanvas({
@@ -671,21 +970,47 @@ class CanvasExporter {
     return canvas;
   }
 
-  /**
-   * Render stylish collection summary card canvas for Twitter / Social sharing (800x480)
-   */
-  static async renderSummaryCardCanvas({ categoryName = '포레스텔라', subtitle = 'Forestella Photocard Collection', badge = '39종', totalCards = 758, totalChecked = 0, percent = 0, logoSrc = 'images/fore/forestella_logo.jpg' }) {
-    const width = 800;
-    const height = 480;
+  static async renderSummaryCardCanvas(options) {
+    return this.generateCollectionSummaryCard(options);
+  }
+
+  static async generateCollectionSummaryCard({
+    categoryName = '포레스텔라',
+    subtitle = 'Forestella Photocard Collection',
+    badge = '44종',
+    totalCards = 770,
+    totalChecked = 0,
+    percent = 0,
+    logoSrc = 'images/fore/forestella_logo.jpg',
+    nickname = '',
+    featuredFavorite = null, // Single selected favorite photocard: { name, templateTitle, imageSrc, x, y, w, h }
+    favoriteCards = []
+  }) {
+    // Requirement 1: Compact size under 400 (380x230)
+    const width = 380;
+    const height = 230;
     const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext('2d');
 
-    // Load logo image if provided
-    let logoImg = null;
-    if (logoSrc) {
-      logoImg = await new Promise((resolve) => {
+    // Preload featured favorite photocard image (or fallback logo)
+    let featuredImg = null;
+    let favToDraw = featuredFavorite || (favoriteCards && favoriteCards.length > 0 ? favoriteCards[0] : null);
+
+    if (favToDraw && favToDraw.imageSrc) {
+      featuredImg = await new Promise((resolve) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+        img.src = favToDraw.imageSrc;
+      });
+    }
+
+    let fallbackLogoImg = null;
+    if (!featuredImg && logoSrc) {
+      fallbackLogoImg = await new Promise((resolve) => {
         const img = new Image();
         img.crossOrigin = 'anonymous';
         img.onload = () => resolve(img);
@@ -694,23 +1019,33 @@ class CanvasExporter {
       });
     }
 
-    // 1. Outer Background (Deep space dark)
-    ctx.fillStyle = '#0f1117';
+    // 1. Background (Forest Green & Dark Navy subtle gradient - 대비가 적고 차분한 그라데이션)
+    const bgGrad = ctx.createLinearGradient(0, 0, width, height);
+    bgGrad.addColorStop(0, '#0a1a15'); // 짙은 숲 그린
+    bgGrad.addColorStop(0.5, '#09141e'); // 중간 블렌드
+    bgGrad.addColorStop(1, '#091024'); // 짙은 남색
+    ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, width, height);
 
-    // Subtle ambient glow
-    const glow = ctx.createRadialGradient(width / 2, height / 2, 40, width / 2, height / 2, 380);
-    glow.addColorStop(0, 'rgba(99, 102, 241, 0.15)');
-    glow.addColorStop(1, 'rgba(99, 102, 241, 0)');
-    ctx.fillStyle = glow;
+    // Ambient radial glow (약한 그린 & 남색 앰비언트 글로우)
+    const greenGlow = ctx.createRadialGradient(80, 80, 10, 80, 80, 200);
+    greenGlow.addColorStop(0, 'rgba(16, 185, 129, 0.10)'); // soft emerald/forest green
+    greenGlow.addColorStop(1, 'rgba(10, 26, 21, 0)');
+    ctx.fillStyle = greenGlow;
     ctx.fillRect(0, 0, width, height);
 
-    // 2. Main Category Card Container
-    const cardX = 40;
-    const cardY = 32;
-    const cardW = width - 80; // 720
-    const cardH = height - 64; // 416
-    const cardRadius = 20;
+    const navyGlow = ctx.createRadialGradient(width - 60, height - 60, 10, width - 60, height - 60, 220);
+    navyGlow.addColorStop(0, 'rgba(59, 130, 246, 0.08)'); // soft navy
+    navyGlow.addColorStop(1, 'rgba(9, 16, 36, 0)');
+    ctx.fillStyle = navyGlow;
+    ctx.fillRect(0, 0, width, height);
+
+    // 2. Card Container (그린 & 짙은남색 은은한 저대비 그라데이션)
+    const cardX = 12;
+    const cardY = 12;
+    const cardW = width - 24; // 356
+    const cardH = height - 24; // 206
+    const cardRadius = 16;
 
     ctx.save();
     ctx.beginPath();
@@ -719,103 +1054,199 @@ class CanvasExporter {
     } else {
       CanvasExporter.drawRoundRectPath(ctx, cardX, cardY, cardW, cardH, cardRadius);
     }
-    ctx.fillStyle = '#181c28';
+    const cardGrad = ctx.createLinearGradient(cardX, cardY, cardX + cardW, cardY + cardH);
+    cardGrad.addColorStop(0, '#0d221b'); // 은은한 짙은 그린
+    cardGrad.addColorStop(0.5, '#0e1a24'); // 차분한 중간 톤
+    cardGrad.addColorStop(1, '#0c162a'); // 은은한 짙은 남색
+    ctx.fillStyle = cardGrad;
     ctx.fill();
-    ctx.lineWidth = 1.5;
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.10)';
     ctx.stroke();
 
-    // 3. Top Section: Logo Badge & '39종' Badge
-    const padX = cardX + 36;
-    const padY = cardY + 32;
+    // 3. Featured Favorite Photocard (로고 대신 최애포카 1장이 들어감)
+    // 세로(Portrait) 또는 가로(Landscape) 포카 모두 자연스럽게 어울리도록 반응형 비율 배치
+    const colCenterX = 70; // Left showcase column center
+    const maxPhotoW = 96;
+    const maxPhotoH = 122;
 
-    // Logo Badge (62x62)
-    const logoSize = 62;
-    const logoRadius = 16;
-    ctx.save();
-    ctx.beginPath();
-    if (typeof ctx.roundRect === 'function') {
-      ctx.roundRect(padX, padY, logoSize, logoSize, logoRadius);
-    } else {
-      CanvasExporter.drawRoundRectPath(ctx, padX, padY, logoSize, logoSize, logoRadius);
-    }
-    ctx.fillStyle = '#f7eee4';
-    ctx.fill();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-    ctx.stroke();
-    ctx.clip();
+    if (featuredImg && favToDraw) {
+      // Crop photocard from template
+      const imgW = featuredImg.naturalWidth || featuredImg.width;
+      const imgH = featuredImg.naturalHeight || featuredImg.height;
+      const sx = (favToDraw.x / 100) * imgW;
+      const sy = (favToDraw.y / 100) * imgH;
+      const sw = Math.max(1, (favToDraw.w / 100) * imgW);
+      const sh = Math.max(1, (favToDraw.h / 100) * imgH);
+      const cardAspect = sw / sh;
 
-    if (logoImg) {
-      ctx.drawImage(logoImg, padX, padY, logoSize, logoSize);
-    } else {
-      ctx.font = '28px sans-serif';
+      // Fit maintaining exact aspect ratio (세로/가로 왜곡 없음)
+      const boxRatio = maxPhotoW / maxPhotoH; // ~0.787
+      let drawW, drawH;
+      if (cardAspect > boxRatio) {
+        // Horizontal (Landscape) or square
+        drawW = maxPhotoW;
+        drawH = Math.round(maxPhotoW / cardAspect);
+      } else {
+        // Vertical (Portrait)
+        drawH = maxPhotoH;
+        drawW = Math.round(maxPhotoH * cardAspect);
+      }
+
+      // Center the photocard + labels group vertically in the left showcase area [24px ~ 184px]
+      const leftColCenterY = 104;
+      const labelGap = 10;
+      const labelTotalH = 26; // 2 lines of labels
+      const totalGroupH = drawH + labelGap + labelTotalH;
+
+      const drawX = Math.round(colCenterX - drawW / 2);
+      const drawY = Math.round(leftColCenterY - totalGroupH / 2);
+      const photoRadius = Math.min(10, Math.round(drawH * 0.09));
+
+      // Realistic Card Drop Shadow
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
+      ctx.shadowBlur = 14;
+      ctx.shadowOffsetY = 6;
+      ctx.fillStyle = '#0f1715';
+      ctx.beginPath();
+      if (typeof ctx.roundRect === 'function') {
+        ctx.roundRect(drawX, drawY, drawW, drawH, photoRadius);
+      } else {
+        CanvasExporter.drawRoundRectPath(ctx, drawX, drawY, drawW, drawH, photoRadius);
+      }
+      ctx.fill();
+      ctx.restore();
+
+      // Photocard image (clipped)
+      ctx.save();
+      ctx.beginPath();
+      if (typeof ctx.roundRect === 'function') {
+        ctx.roundRect(drawX, drawY, drawW, drawH, photoRadius);
+      } else {
+        CanvasExporter.drawRoundRectPath(ctx, drawX, drawY, drawW, drawH, photoRadius);
+      }
+      ctx.clip();
+      ctx.drawImage(featuredImg, sx, sy, sw, sh, drawX, drawY, drawW, drawH);
+      ctx.restore();
+
+      // Delicate subtle border (빨간 테두리 제거 -> 은은한 반투명 라인)
+      ctx.save();
+      ctx.beginPath();
+      if (typeof ctx.roundRect === 'function') {
+        ctx.roundRect(drawX, drawY, drawW, drawH, photoRadius);
+      } else {
+        CanvasExporter.drawRoundRectPath(ctx, drawX, drawY, drawW, drawH, photoRadius);
+      }
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.14)';
+      ctx.stroke();
+      ctx.restore();
+
+      // Photocard Name under the card
+      ctx.save();
       ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('✨', padX + logoSize / 2, padY + logoSize / 2);
-    }
-    ctx.restore();
+      ctx.font = '700 10px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+      ctx.fillStyle = '#f1f5f9';
+      let cardLabel = favToDraw.name || '최애 포카';
+      if (cardLabel.length > 10) cardLabel = cardLabel.substring(0, 9) + '…';
+      ctx.fillText(cardLabel, colCenterX, drawY + drawH + 13);
 
-    // Item Count Badge (Top Right)
-    const badgeText = badge || '39종';
-    ctx.font = '700 15px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
-    const badgeW = ctx.measureText(badgeText).width + 24;
-    const badgeH = 32;
-    const badgeX = cardX + cardW - 36 - badgeW;
-    const badgeY = padY + 14;
-
-    ctx.save();
-    ctx.beginPath();
-    if (typeof ctx.roundRect === 'function') {
-      ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 16);
+      ctx.font = '500 9px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+      ctx.fillStyle = '#64748b';
+      let sheetLabel = (favToDraw.templateTitle || '').replace(/^fore\d+\.\s*/, '');
+      if (sheetLabel.length > 11) sheetLabel = sheetLabel.substring(0, 10) + '…';
+      ctx.fillText(sheetLabel, colCenterX, drawY + drawH + 25);
+      ctx.restore();
     } else {
-      CanvasExporter.drawRoundRectPath(ctx, badgeX, badgeY, badgeW, badgeH, 16);
+      // Fallback placeholder / Logo
+      const logoW = 80;
+      const logoH = 80;
+      const logoX = Math.round(colCenterX - logoW / 2);
+      const logoY = 46;
+      const logoRadius = 10;
+
+      ctx.save();
+      ctx.beginPath();
+      if (typeof ctx.roundRect === 'function') {
+        ctx.roundRect(logoX, logoY, logoW, logoH, logoRadius);
+      } else {
+        CanvasExporter.drawRoundRectPath(ctx, logoX, logoY, logoW, logoH, logoRadius);
+      }
+      ctx.fillStyle = '#171b2b';
+      ctx.fill();
+      ctx.lineWidth = 1.2;
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      if (fallbackLogoImg) {
+        ctx.clip();
+        ctx.drawImage(fallbackLogoImg, logoX, logoY, logoW, logoH);
+      } else {
+        ctx.font = '24px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('💖', colCenterX, logoY + logoH / 2 - 10);
+        ctx.font = '600 10px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+        ctx.fillStyle = '#94a3b8';
+        ctx.fillText('최애포카', colCenterX, logoY + logoH / 2 + 14);
+      }
+      ctx.restore();
     }
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-    ctx.fill();
-    ctx.fillStyle = '#f8fafc';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(badgeText, badgeX + badgeW / 2, badgeY + badgeH / 2);
-    ctx.restore();
 
-    // 4. Middle Section: Title & Subtitle
-    const titleY = padY + logoSize + 40;
+    // 4. Right Area: Title & Nickname & Progress
+    const rightX = 132;
+    const rightW = cardX + cardW - 14 - rightX; // 222px
+
+    // Top Brand Line: '포레스텔라' 문구 유지
+    ctx.save();
     ctx.textAlign = 'left';
-    ctx.font = '800 32px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(categoryName, padX, titleY);
+    ctx.font = '700 13px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#a5b4fc';
+    ctx.fillText('포레스텔라', rightX, 44);
 
-    ctx.font = '500 16px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
-    ctx.fillStyle = '#94a3b8';
-    ctx.fillText(subtitle, padX, titleY + 30);
+    // Main Title Line: 닉네임 입력 시 '닉네임님의 포토카드 컬렉션', 미입력 시 '포토카드 컬렉션'
+    if (nickname && nickname.trim()) {
+      const nick = nickname.trim();
+      const titleText = `${nick}님의 포토카드 컬렉션`;
+      let fontSize = 15;
+      ctx.font = `800 ${fontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif`;
+      while (fontSize > 10.5 && ctx.measureText(titleText).width > rightW) {
+        fontSize -= 0.5;
+        ctx.font = `800 ${fontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif`;
+      }
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(titleText, rightX, 64);
+    } else {
+      ctx.font = '800 15px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('포토카드 컬렉션', rightX, 64);
+    }
 
-    // Divider Line
-    const divY = titleY + 65;
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(padX, divY);
-    ctx.lineTo(cardX + cardW - 36, divY);
-    ctx.stroke();
+    // Subtitle (포카 체커 문구 제거)
+    ctx.font = '500 10px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#64748b';
+    ctx.fillText('44종 도안 수록', rightX, 82);
 
-    // 5. Bottom Section: Progress Meta & Bar
-    const statsY = divY + 38;
-    ctx.font = '600 17px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
-    ctx.fillStyle = '#94a3b8';
-    ctx.fillText('수집 진행률', padX, statsY);
+    // Progress Information
+    const progY = 114;
+    ctx.font = '600 11px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#cbd5e1';
+    ctx.fillText('수집 현황', rightX, progY);
 
     ctx.textAlign = 'right';
-    ctx.font = '700 20px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
-    ctx.fillStyle = '#a5b4fc';
-    ctx.fillText(`${totalChecked} / ${totalCards} 장 (${percent}%)`, cardX + cardW - 36, statsY);
+    ctx.font = '700 12px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#34d399';
+    ctx.fillText(`${totalChecked} / ${totalCards} 장 (${percent}%)`, rightX + rightW, progY);
 
     // Progress Bar Track
-    const barX = padX;
-    const barY = statsY + 18;
-    const barW = cardW - 72;
-    const barH = 12;
-    const barRadius = 6;
+    const barX = rightX;
+    const barY = 122;
+    const barW = rightW;
+    const barH = 7;
+    const barRadius = 3.5;
 
     ctx.beginPath();
     if (typeof ctx.roundRect === 'function') {
@@ -823,10 +1254,10 @@ class CanvasExporter {
     } else {
       CanvasExporter.drawRoundRectPath(ctx, barX, barY, barW, barH, barRadius);
     }
-    ctx.fillStyle = '#0f1117';
+    ctx.fillStyle = '#060a12';
     ctx.fill();
 
-    // Progress Bar Fill
+    // Progress Bar Fill (Green & Sky/Navy gradient)
     if (percent > 0) {
       const fillW = Math.max(barRadius * 2, Math.round((barW * percent) / 100));
       ctx.beginPath();
@@ -836,26 +1267,49 @@ class CanvasExporter {
         CanvasExporter.drawRoundRectPath(ctx, barX, barY, fillW, barH, barRadius);
       }
       const fillGrad = ctx.createLinearGradient(barX, barY, barX + fillW, barY);
-      fillGrad.addColorStop(0, '#38bdf8');
-      fillGrad.addColorStop(0.5, '#6366f1');
-      fillGrad.addColorStop(1, '#a855f7');
+      fillGrad.addColorStop(0, '#10b981');
+      fillGrad.addColorStop(0.6, '#06b6d4');
+      fillGrad.addColorStop(1, '#3b82f6');
       ctx.fillStyle = fillGrad;
       ctx.fill();
     }
 
-    // 6. Card Footer URL & Hashtag
-    const footY = cardY + cardH - 18;
+    // Collector Badge Pill
+    const badgeY = 142;
+    const badgeH = 22;
+    ctx.beginPath();
+    if (typeof ctx.roundRect === 'function') {
+      ctx.roundRect(rightX, badgeY, rightW, badgeH, 6);
+    } else {
+      CanvasExporter.drawRoundRectPath(ctx, rightX, badgeY, rightW, badgeH, 6);
+    }
+    ctx.fillStyle = 'rgba(16, 185, 129, 0.10)';
+    ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(52, 211, 153, 0.22)';
+    ctx.stroke();
+
+    ctx.textAlign = 'center';
+    ctx.font = '600 10px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#a7f3d0';
+    const tier = CanvasExporter.getCollectorTier(percent);
+    ctx.fillText(tier.badge, rightX + rightW / 2, badgeY + 14);
+    ctx.restore();
+
+    // 5. Card Footer URL & Hashtag (하단 '포카 체커' 문구 제거)
+    const footY = 196;
+    ctx.save();
     ctx.textAlign = 'left';
-    ctx.font = '500 13px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
-    ctx.fillStyle = '#475569';
-    ctx.fillText('✨ 포카 체커 • https://foretissimo.github.io/phoca_checker/', padX, footY);
+    ctx.font = '500 10px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#64748b';
+    ctx.fillText('foretissimo.github.io', 26, footY);
 
     ctx.textAlign = 'right';
-    ctx.font = '600 13px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
-    ctx.fillStyle = '#6366f1';
-    ctx.fillText('#포레포카체커', cardX + cardW - 36, footY);
-
+    ctx.font = '700 10px -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+    ctx.fillStyle = '#818cf8';
+    ctx.fillText('#포레포카체커', cardX + cardW - 14, footY);
     ctx.restore();
+
     return canvas;
   }
 
@@ -998,6 +1452,81 @@ class CanvasExporter {
     ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
     ctx.lineTo(x, y + radius);
     ctx.quadraticCurveTo(x, y, x + radius, y);
+  }
+
+  /**
+   * 포카 수집률(%)에 따른 수집가 칭호 뱃지 및 재치있는 𝕏(트위터) 공유 문구 반환 (현실 덕질 공감형)
+   * @param {number} percent - 수집 진행률 (0 ~ 100)
+   * @returns {{ badge: string, tweetPhrase: string }}
+   */
+  static getCollectorTier(percent) {
+    const p = Math.max(0, Math.min(100, Math.round(percent || 0)));
+
+    if (p >= 100) {
+      return {
+        badge: '🏆 전설의 올클리어! 숲의 신 강림',
+        tweetPhrase: '전설의 100% 올클리어! 바인더 최종 봉인, 포카의 신 강림 👑✨'
+      };
+    }
+    if (p >= 90) {
+      return {
+        badge: '🎯 드볼 1보 직전! 갈망포카 수배 중',
+        tweetPhrase: '드볼까지 단 한 발자국… 마지막 갈망포카 양도해주실 천사 숲별 구함 👼'
+      };
+    }
+    if (p >= 80) {
+      return {
+        badge: '👑 포카 도사! 없는 게 뭐죠?',
+        tweetPhrase: '포카 테두리 1초만 봐도 무슨 앨범 몇 번째 버전인지 맞힘 🔮'
+      };
+    }
+    if (p >= 70) {
+      return {
+        badge: '📮 준등기 VIP & 교환의 달인',
+        tweetPhrase: '우체국 기사님이랑 절친 될 기세… 갈망포카 다 데려올 때까지 달린다 💨'
+      };
+    }
+    if (p >= 60) {
+      return {
+        badge: '📸 어디서든 예절샷 준비완료',
+        tweetPhrase: '밥 먹을 때, 카페 갈 때 포카 안 꺼내면 손 떨리는 지경에 도달 ☕️📸'
+      };
+    }
+    if (p >= 50) {
+      return {
+        badge: '🔥 하프 마스터! 반환점 돌파',
+        tweetPhrase: '벌써 50% 반환점 돌파! 돌이킬 수 없는 강을 건넜다, 후진은 없다 🚀'
+      };
+    }
+    if (p >= 40) {
+      return {
+        badge: '💸 내 통장은 숲으로 가는 중',
+        tweetPhrase: '절반이 눈앞인데 통장은 왜 얇아질까요? (그래도 행복하면 OK) 💸'
+      };
+    }
+    if (p >= 30) {
+      return {
+        badge: '🎲 앨범깡 손맛에 눈뜬 자',
+        tweetPhrase: '앨범 뜯는 손맛을 알아버렸습니다. 중복 나와도 일단 사랑해…🥺'
+      };
+    }
+    if (p >= 20) {
+      return {
+        badge: '📖 바인더 첫 장 채운 숲별',
+        tweetPhrase: '바인더 첫 페이지 완공! 매일 밤 꺼내보며 흐뭇해하는 중 🌙'
+      };
+    }
+    if (p > 0) { // 1% ~ 19%
+      return {
+        badge: '🐣 딱 최애 1장만 모으려 했는데...',
+        tweetPhrase: '‘딱 최애 한 장만…’으로 시작했다가 입덕 완료. 멈추기엔 늦었다 🏃'
+      };
+    }
+    // 0%
+    return {
+      badge: '🌱 텅장 방어 성공? (0%)',
+      tweetPhrase: '바인더는 준비 완료! 0%에서 시작하는 드볼 대서사시 🌱'
+    };
   }
 }
 

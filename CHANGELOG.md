@@ -4,6 +4,67 @@ All notable functional changes, architecture improvements, and bug fixes for the
 
 ---
 
+## [v2026.11.12-4] - 2026-11-12
+
+### 💬 Witty Collector Tier Badges & 𝕏 Share Quotes (0% ~ 100%)
+- **Dynamic 10% Step Collector Phrases**:
+  - Implemented `CanvasExporter.getCollectorTier(percent)` covering 11 tiers (0% up to 100% in 10% increments).
+  - Designed with realistic K-pop/photocard collector humor (바인더, 앨범깡, 예절샷, 준등기, 통장 요정, 갈망포카, 드볼/올클리어).
+- **Summary Card Badge Pill**:
+  - Canvas summary card dynamically displays the matching collector badge title.
+- **𝕏 (Twitter) Share Intent**:
+  - Automatically incorporates the witty tier quote into the prefilled tweet message along with the user's progress percentage and featured photocard.
+
+---
+
+## [v2026.11.12-3] - 2026-11-12
+
+### 💖 Top-Bar Favorite Controls & Card Mask Occlusion Fix
+- **Top Control Bar Favorite Mode**:
+  - Added dedicated `[최애포카 선택]` mode toggle in the top control bar.
+  - When active, clicking anywhere on a photocard toggles its favorite state directly without requiring precise aiming at the corner icon.
+- **Top Bar `[💖 최애 카드]` Quick Access & Live Badge**:
+  - Added direct button in the control bar displaying live count of favorited cards (`[💖 최애 카드 (N)]`), opening the collection summary modal immediately.
+- **Occlusion Fix on Checked Cards**:
+  - Elevated photocard heart icon z-index to `50` (always above card mask and complete stamp).
+  - Set baseline button opacity to `0.85` so it remains clearly visible and clickable even after cards are marked as owned.
+
+---
+
+## [v2026.11.12-2] - 2026-11-12
+
+### 📸 Added 5 New Photocard Templates (fore40 ~ fore44)
+- **New Photocard Templates**:
+  - `fore40` (카니버): CARNIVOR Collab Package (4 cards: Bae Doo-hoon, Kang Hyung-ho, Cho Min-gyu, Ko Woo-rim).
+  - `fore41` (로얄입장포카): The Royal Encore Entrance Benefits (2 cards: Saturday, Sunday).
+  - `fore42` (더일루셔니스트): The Illusionist QR Satisfaction Survey Benefit (1 card).
+  - `fore43` (더웨이브): The Wave QR Satisfaction Survey Benefit (1 card).
+  - `fore44` (xscala): XSCALA Series Entrance Benefits (4 cards: Bae Doo-hoon, Kang Hyung-ho, Cho Min-gyu, Ko Woo-rim).
+- **Template Expansion**:
+  - Total templates expanded from 39 to **44**.
+  - Total registered cards expanded from 758 to **770**.
+  - Merged poster generation, drawer listings, and counters automatically synchronized.
+
+---
+
+## [v2026.11.12] - 2026-11-12
+
+### 💖 Favorite Photocards, Nickname & Custom Summary Card
+- **Favorite Photocard (최애 포카 ♥) Selection**:
+  - Interactive mini heart button on top-right of every photocard slot.
+  - Toggling favorite highlights the card with glowing rose outline and animated heart badge.
+  - Real-time persistent sync in `localStorage` under `phoca_favorites_{templateId}`.
+- **Collector Nickname Support**:
+  - Nickname input with real-time browser storage (`phoca_user_nickname`).
+- **Dynamic Favorite & Progress Summary Card Generator**:
+  - High-res 900x560 canvas rendering `"[Nickname]'s Photocard Collection"`, progress bar (`N / 758 cards (%)`), and high-res cropped thumbnails of favorited photocards.
+  - Direct clipboard copy (`ClipboardItem`), PNG file download, and customized 𝕏 (Twitter) share composer integration.
+- **Backup & Restore Compatibility**:
+  - Serializes `nickname` and `favorites` mapping into JSON backup file.
+  - Fully restores all favorites and user nickname on file import without loss.
+
+---
+
 ## [v2026.10.25] - 2026-10-25
 
 ### ✨ Complete Marker Customization & '(완성)' Label Transition
