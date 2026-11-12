@@ -2777,7 +2777,7 @@ body {
       <!-- Single-line Interactive Notice Bar -->
       <div id="btn-notice-ticker" class="notice-ticker-bar" title="공지사항 및 사용 도움말 열기">
         <span class="notice-ticker-badge">✨ [업데이트]</span>
-        <span>합본 분리 다운로드(전체 / 올클리어 보유 / 미보유 위시 / 최애포카 합본) 기능 추가!</span>
+        <span>신규 포카 5종 추가(총 44종) &amp; 최애포카 모아보기 / 모바일 바로가기 기능 추가!</span>
       </div>
     </div>
 
@@ -3101,15 +3101,39 @@ body {
           <span>📢</span> 공지사항 &amp; 업데이트 <span style="font-size: 0.76rem; font-weight: 700; color: #fb7185; background: rgba(244, 63, 94, 0.2); padding: 2px 7px; border-radius: 9999px; margin-left: 0.35rem;">v2026.11.12</span>
         </div>
         <div class="info-card">
-          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.3rem;">
-            <span>💖 [v2026.11.12] 최애 포카(♥) 지정 &amp; 나만의 수집 카드 생성 기능 추가</span>
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.3rem;">
+            <span>✨ [v2026.11.12] 신규 포카 도안 5종 추가 &amp; 최애포카 및 바로가기 업데이트</span>
             <span style="font-size: 0.72rem; color: #fb7185; background: rgba(244, 63, 94, 0.15); padding: 1px 6px; border-radius: 4px; font-weight: 600;">최신 버전</span>
           </div>
-          <ul style="margin: 0 0 0.6rem 0; padding-left: 1.15rem; line-height: 1.55; font-size: 0.83rem; color: #cbd5e1;">
-            <li><strong>최애 포카(♥) 지정</strong>: 각 포토카드 우측 상단 하트(♥)를 눌러 내가 가장 좋아하는 최애 포카를 찜할 수 있습니다. (실시간 localStorage 자동 저장)</li>
-            <li><strong>컬렉터 닉네임 입력</strong>: 상단 [자랑하기]를 누르면 나의 닉네임을 설정하여 보관할 수 있습니다.</li>
-            <li><strong>나만의 포카 수집 카드 생성</strong>: 닉네임 + 전체 수집률(%) + 최애 포카 썸네일들이 예쁘게 담긴 공유용 카드를 실시간 렌더링(클립보드 복사 / 다운로드 / 𝕏 공유)합니다.</li>
-            <li><strong>백업 파일 확장</strong>: 백업 파일(.json)에 닉네임과 최애 포카 목록도 함께 포함되어 기기 간 완벽 복원됩니다.</li>
+
+          <div style="font-weight: 700; color: #38bdf8; font-size: 0.82rem; margin-bottom: 0.3rem;">
+            📸 신규 포토카드 도안 5종 추가 (총 44종 / 770장)
+          </div>
+          <ul style="margin: 0 0 0.65rem 0; padding-left: 1.15rem; line-height: 1.55; font-size: 0.82rem; color: #cbd5e1;">
+            <li><code>fore40</code> <strong>카니버</strong>: CARNIVOR 와인 콜라보 패키지 4장 (배두훈, 강형호, 조민규, 고우림)</li>
+            <li><code>fore41</code> <strong>로얄입장포카</strong>: 21-22 더로얄 앙코르 콘서트 입장 특전 2장 (토/일)</li>
+            <li><code>fore42</code> <strong>더일루셔니스트</strong>: 더일루셔니스트 콘서트 QR 만족도 조사 특전 1장</li>
+            <li><code>fore43</code> <strong>더웨이브</strong>: 더웨이브 콘서트 QR 만족도 조사 특전 1장</li>
+            <li><code>fore44</code> <strong>xscala</strong>: XSCALA 시리즈 콘서트 입장 특전 4장 (배두훈, 강형호, 조민규, 고우림)</li>
+            <li>포레스텔라 전체 도안이 기존 39종(758장)에서 <strong>44종(770장)</strong>으로 확장되었습니다.</li>
+          </ul>
+
+          <div style="font-weight: 700; color: #f43f5e; font-size: 0.82rem; margin-bottom: 0.3rem;">
+            💖 최애 포카(♥) 지정 &amp; 모아보기 / 자랑하기 카드 생성
+          </div>
+          <ul style="margin: 0 0 0.65rem 0; padding-left: 1.15rem; line-height: 1.55; font-size: 0.82rem; color: #cbd5e1;">
+            <li><strong>최애 포카(♥) 지정</strong>: 각 포토카드 우측 상단 하트(♥) 또는 상단 <code>[최애포카 선택]</code> 모드로 간편하게 찜 등록</li>
+            <li><strong>최애포카 모아보기 페이지</strong>: 찜한 최애 포카들을 한눈에 모아보고 순위 확인 및 <code>[최애포카 합본 다운로드]</code> 지원</li>
+            <li><strong>컬렉터 닉네임 &amp; 자랑하기 카드</strong>: '닉네임님의 포토카드 컬렉션' 타이틀과 수집 진행률, 최애 포카가 담긴 카드 이미지 실시간 생성 (다운로드 / 𝕏 공유)</li>
+            <li><strong>백업 파일 확장</strong>: 백업(.json) 시 체크 상태와 함께 닉네임, 최애 포카 목록까지 완전 동기화</li>
+          </ul>
+
+          <div style="font-weight: 700; color: #10b981; font-size: 0.82rem; margin-bottom: 0.3rem;">
+            📱 모바일 바로가기 &amp; 첫화면 최근 포카판 즉시 이동
+          </div>
+          <ul style="margin: 0 0 0.6rem 0; padding-left: 1.15rem; line-height: 1.55; font-size: 0.82rem; color: #cbd5e1;">
+            <li><strong>모바일 홈 화면 추가(PWA)</strong>: 스마트폰 홈 화면에 바로가기 앱 아이콘을 추가할 수 있는 안내 배너 및 가이드 모달 제공</li>
+            <li><strong>마지막 확인 페이지 복원</strong>: 첫 화면의 카테고리 카드를 누르면 가장 최근에 보던 포카판으로 즉시 자동 이동</li>
           </ul>
 
           <div style="font-weight: 700; color: #94a3b8; font-size: 0.8rem; margin-bottom: 0.3rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.45rem;">
@@ -3555,9 +3579,9 @@ body {
   <div id="toast-container" class="toast-container"></div>
 
   <!-- Scripts -->
-  <script src="js/templates.js?v=2026.11.12-collector-tiers"></script>
-  <script src="js/canvas-export.js?v=2026.11.12-collector-tiers"></script>
-  <script src="js/editor.js?v=2026.11.12-collector-tiers"></script>
-  <script src="js/app.js?v=2026.11.12-collector-tiers"></script>
+  <script src="js/templates.js?v=2026.11.12-nav-fix"></script>
+  <script src="js/canvas-export.js?v=2026.11.12-nav-fix"></script>
+  <script src="js/editor.js?v=2026.11.12-nav-fix"></script>
+  <script src="js/app.js?v=2026.11.12-nav-fix"></script>
 </body>
 </html>

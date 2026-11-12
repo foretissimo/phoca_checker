@@ -10,6 +10,7 @@ class PhocaCheckerApp {
     this.currentCategory = this.categories[0] || null;
     this.currentTemplate = this.templates[0] || null;
     this.currentTemplateId = this.templates[0]?.id || 'fore1';
+    this.lastTemplateId = null;
     
     // Checked cards set for active template
     this.checkedCards = new Set();
@@ -230,7 +231,11 @@ class PhocaCheckerApp {
     // Nav Home
     if (this.btnNavHome) {
       this.btnNavHome.addEventListener('click', () => {
-        window.location.hash = '#/home';
+        if (window.location.hash === '#/home' || window.location.hash === '' || window.location.hash === '#') {
+          this.showHomeView();
+        } else {
+          window.location.hash = '#/home';
+        }
       });
     }
 
@@ -471,6 +476,7 @@ class PhocaCheckerApp {
 
       this.nickname = localStorage.getItem('phoca_user_nickname') || '';
       this.featuredFavoriteId = localStorage.getItem('phoca_featured_favorite_id') || null;
+      this.lastTemplateId = localStorage.getItem('phoca_last_template_id') || null;
       this.updateFavCardBadgeCount();
 
       if (localStorage.getItem('phoca_shortcut_banner_dismissed') === 'true') {
@@ -483,7 +489,7 @@ class PhocaCheckerApp {
 
   handleRoute() {
     const hash = window.location.hash || '#/home';
-    const parts = hash.replace(/^#\//, '').split('/');
+    const parts = hash.replace(/^#\/?/, '').split('/');
     const view = parts[0] || 'home';
 
     if (view === 'favorites' || view === 'favs' || view === 'fav') {
@@ -493,7 +499,15 @@ class PhocaCheckerApp {
       this.openInfoModal();
     } else if (view === 'checker' || view === 'fore') {
       const categoryId = 'fore';
-      const templateId = parts[1] || 'fore1';
+      let templateId = parts[1];
+      if (!templateId) {
+        templateId = (this.lastTemplateId && this.templates.some(t => t.id === this.lastTemplateId))
+          ? this.lastTemplateId
+          : (this.templates[0]?.id || 'fore1');
+      } else if (!this.templates.some(t => t.id === templateId)) {
+        // 지정된 페이지가 없을 경우 첫 번째 페이지로 안전하게 폴백
+        templateId = this.templates[0]?.id || 'fore1';
+      }
       this.showCheckerView(categoryId, templateId);
     } else {
       this.showHomeView();
@@ -521,7 +535,7 @@ class PhocaCheckerApp {
     if (this.navTemplateName) this.navTemplateName.style.display = 'none';
     
     this.renderCategoryHub();
-    this.updateFavBadgeCount();
+    this.updateFavCardBadgeCount();
   }
 
   renderCategoryHub() {
@@ -580,7 +594,22 @@ class PhocaCheckerApp {
 
       if (cat.isAvailable) {
         card.addEventListener('click', () => {
-          window.location.hash = `#/checker/fore1`;
+          // 마지막으로 눌렀던 페이지가 있으면 그 페이지로 이동, 없거나 삭제되었으면 첫 페이지로 이동
+          let targetTemplate = null;
+          if (this.lastTemplateId) {
+            targetTemplate = this.templates.find(t => t.id === this.lastTemplateId && t.categoryId === cat.id);
+          }
+          if (!targetTemplate) {
+            targetTemplate = this.templates.find(t => t.categoryId === cat.id) || this.templates[0];
+          }
+          const targetId = targetTemplate ? targetTemplate.id : (this.templates[0]?.id || 'fore1');
+          const targetHash = `#/checker/${targetId}`;
+
+          if (window.location.hash === targetHash) {
+            this.handleRoute();
+          } else {
+            window.location.hash = targetHash;
+          }
         });
       }
 
@@ -827,6 +856,10 @@ class PhocaCheckerApp {
 
     this.currentTemplate = template;
     this.currentTemplateId = template.id;
+    this.lastTemplateId = template.id;
+    try {
+      localStorage.setItem('phoca_last_template_id', template.id);
+    } catch (e) {}
 
     // Load checks from LocalStorage
     this.loadCheckedStateForCurrent();
@@ -1003,6 +1036,10 @@ class PhocaCheckerApp {
     if (this.mergedExportModalBackdrop && this.mergedExportModalBackdrop.classList.contains('open')) {
       this.updateMergedExportModalCounts();
     }
+  }
+
+  updateFavBadgeCount() {
+    this.updateFavCardBadgeCount();
   }
 
   getAllFavoriteCards() {
